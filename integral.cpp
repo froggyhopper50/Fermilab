@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -62,7 +63,7 @@ double integrateAbove(double xLBound, double xUBound)
 
 	cout << "The function max is " << fMax << endl;
 
-	for (int i=0; i<1000000; i++)
+	for (int i=0; i<100000000; i++)
 	{
 		double x;
 		double y;
@@ -100,7 +101,7 @@ double integrateBelow(double xLBound, double xUBound)
 
 	cout << "The function min is " << fMin << endl;
 
-	for (int i=0; i<1000000; i++)
+	for (int i=0; i<100000000; i++)
 	{
 		double x;
 		double y;
