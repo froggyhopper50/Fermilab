@@ -4,12 +4,35 @@
 
 using namespace std;
 
+//This program uses a Toy Monte Carlo to integrate any continuous function,
+//returning a result typically within a thousandth of the actual value. In using
+//a Toy Monte Carlo, this program is able to integrate functions that cannot
+//normally be integrated by hand. Declare the function you would like to
+//integrate in terms of z within the double f() macro below according to the
+//following format:
+//
+//double f(double z)
+//{
+//	double output;
+//	output = [insert function here];
+//	return output;
+//}
+//
+//The user will define the bounds over which the function is to be integrated
+//while the program is running.
+//
+//CODED BY JAMES KENNEDY
+
+//Defines the function to be integrated
+
 double f(double z)
 {
 	double output;
 	output = sin(exp(z));
 	return output;
 }
+
+//Determines the function maximum
 
 double fMaximum(double xLBound, double xUBound)
 {
@@ -30,6 +53,8 @@ double fMaximum(double xLBound, double xUBound)
 	return fMax;
 }
 
+//Determines the function minimum
+
 double fMinimum(double xLBound, double xUBound)
 {
 	double fMin = 0.;
@@ -48,6 +73,8 @@ double fMinimum(double xLBound, double xUBound)
 
 	return fMin;
 }
+
+//Integrates that part of the function which is above the x axis
 
 double integrateAbove(double xLBound, double xUBound)
 {
@@ -87,6 +114,8 @@ double integrateAbove(double xLBound, double xUBound)
 	return posIntegral;
 }
 
+//Integrates that part of the function which is below the x axis
+
 double integrateBelow(double xLBound, double xUBound)
 {
 	srand((unsigned)time(NULL));
@@ -125,6 +154,8 @@ double integrateBelow(double xLBound, double xUBound)
 	return negIntegral;
 }
 
+//Calculates the total integral
+
 double integrate()
 {
 	double posInt;
@@ -144,6 +175,8 @@ double integrate()
 
 	return totalInt;
 }
+
+//Returns the total integral to the user
 
 int main()
 {
