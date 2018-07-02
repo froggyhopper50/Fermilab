@@ -3,6 +3,8 @@
 
 using namespace std;
 
+//Tests if given integer is prime
+
 bool isPrime(int x)
 {
 	for (int i=2; i<=x; i++)
@@ -17,6 +19,8 @@ bool isPrime(int x)
 		}
 	}
 }
+
+//Returns list of primes, number of primes, and sum of primes
 
 int main()
 {
