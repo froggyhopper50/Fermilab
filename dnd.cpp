@@ -5,13 +5,6 @@
 #include <string>
 #include <algorithm>
 
-int strHOLD;
-int dexHOLD;
-int conHOLD;
-int intHOLD;
-int wisHOLD;
-int chaHOLD;
-
 using namespace std;
 
 class unit
@@ -25,6 +18,8 @@ class unit
 	int wisdom;
 	int charisma;
 };
+
+unit player;
 
 int rollStat()
 {
@@ -93,67 +88,67 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum1;
-	strHOLD = stats[statNum1];
+	while (statNum1 < 0 || statNum1 > 5)
+	{
+		cout << "Invalid input! Please try again:" << endl;
+		cin >> statNum1;
+	}
+	player.strength = stats[statNum1];
 
 	cout << "Which stat will be dexterity? "
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum2;
-	while (statNum2 == statNum1)
+	while (statNum2 == statNum1 || statNum2 < 0 || statNum2 > 5)
 	{
-		cout << "That stat was already assigned!
-		     << "Please choose a different stat: " << endl;
+		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum2;
 	}
-	dexHOLD = stats[statNum2];
+	player.dexterity = stats[statNum2];
 
 	cout << "Which stat will be constitution? "
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum3;
-	while (statNum3 == statNum2 || statNum3 == statNum1)
+	while (statNum3 == statNum2 || statNum3 == statNum1 || statNum3 < 0 || statNum3 > 5)
 	{
-		cout << "That stat was already assigned!
-		     << "Please choose a different stat: " << endl;
+		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum3;
 	}
-	conHOLD = stats[statNum3];
+	player.constitution = stats[statNum3];
 
 	cout << "Which stat will be intelligence? "
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum4;
-	while (statNum4 == statNum3 || statNum4 == statNum2 || statNum4 == statNum1)
+	while (statNum4 == statNum3 || statNum4 == statNum2 || statNum4 == statNum1 || statNum4 < 0 || statNum4 > 5)
 	{
-		cout << "That stat was already assigned!
-		     << "Please choose a different stat: " << endl;
+		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum4;
 	}
-	intHOLD = stats[statNum4];
+	player.intelligence = stats[statNum4];
 
 	cout << "Which stat will be wisdom? "
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum5;
-	while (statNum5 == statNum4 || statNum5 == statNum3 || statNum5 == statNum2 || statNum5 == statNum1)
+	while (statNum5 == statNum4 || statNum5 == statNum3 || statNum5 == statNum2 || statNum5 == statNum1 || statNum5 < 0 || statNum5 > 5)
 	{
-		cout << "That stat was already assigned!
-		     << "Please choose a different stat: " << endl;
+		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum5;
 	}
-	wisHOLD = stats[statNum5];
+	player.wisdom = stats[statNum5];
 
 	cout << "Which stat will be charisma? "
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum6;
-	while (statNum6 == statNum5 || statNum6 == statNum4 || statNum6 == statNum3 || statNum6 == statNum2 || statNum6 == statNum1)
+	while (statNum6 == statNum5 || statNum6 == statNum4 || statNum6 == statNum3 || statNum6 == statNum2 || statNum6 == statNum1 || statNum6 < 0 || statNum6 > 5)
 	{
-		cout << "That stat was already assigned!
-		     << "Please choose a different stat: " << endl;
+		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum6;
 	}
-	chaHOLD = stats[statNum6];
+	player.charisma = stats[statNum6];
 
 	return;
 }
@@ -162,15 +157,7 @@ int main()
 {
 	cout << "Generating a stat array for a lvl 3 character..." << endl;
 
-	unit player;
 	rStatsPlayer();
-
-	player.strength = strHOLD;
-	player.dexterity = dexHOLD;
-	player.constitution = conHOLD;
-	player.intelligence = intHOLD;
-	player.wisdom = wisHOLD;
-	player.charisma = chaHOLD;
 
 	cout << "Strength:     " << player.strength << endl;
 	cout << "Dexterity:    " << player.dexterity << endl;
