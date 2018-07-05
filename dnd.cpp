@@ -154,11 +154,119 @@ void rStatsPlayer()
 	return;
 }
 
+void raceBonuses()
+{
+	string race = "none";
+
+	do
+	{
+		cout << "Please enter the race of your character." << endl
+		     << "Use a _ in the place of any spaces." << endl
+		     << "For a list of races, type list:" << endl;
+		cin >> race;
+
+		if (race == "list")
+		{
+			cout << "PLAYABLE RACES " << "STR " << "DEX "
+			     << "CON " << "INT " << "WIS " << "CHA" << endl;
+			cout << "HUMAN          " << " +1 " << " +1 "
+			     << " +1 " << " +1 " << " +1 " << " +1" << endl;
+			cout << "MOUNTAIN_DWARF " << " +2 " << "--- "
+			     << " +2 " << "--- " << "--- " << "---" << endl;
+			cout << "WOOD_ELF       " << "--- " << " +2 "
+			     << "--- " << "--- " << " +1 " << "---" << endl;
+			cout << "TIEFLING       " << "--- " << "--- "
+			     << "--- " << " +1 " << "--- " << " +2" << endl;
+			cout << "STOUT_HALFLING " << "--- " << " +2 "
+			     << " +1 " << "--- " << "--- " << "---" << endl;
+			cout << "ORC            " << " +2 " << "--- "
+			     << " +1 " << " -2 " << "--- " << "---" << endl;
+			cout << "SAVAGE_GNOLL   " << " +2 " << "--- "
+			     << "--- " << "--- " << " +1 " << "---" << endl;
+			cout << "DRAGONBORN     " << " +2 " << "--- "
+			     << "--- " << "--- " << "--- " << " +1" << endl;
+			race = "none";
+		}
+
+		else if (race == "human" || race == "HUMAN")
+		{
+			cout << "Player Race: Human" << endl;
+			player.strength++;
+			player.dexterity++;
+			player.constitution++;
+			player.intelligence++;
+			player.wisdom++;
+			player.charisma++;
+		}
+
+		else if (race == "mountain_dwarf" || race == "MOUNTAIN_DWARF")
+		{
+			cout << "Player Race: Mountain Dwarf" << endl;
+			player.strength = player.strength + 2;
+			player.constitution = player.constitution + 2;
+		}
+
+		else if (race == "wood_elf" || race == "WOOD_ELF")
+		{
+			cout << "Player Race: Wood Elf" << endl;
+			player.dexterity = player.dexterity + 2;
+			player.wisdom++;
+		}
+
+		else if (race == "tiefling" || race == "TIEFLING")
+		{
+			cout << "Player Race: Tiefling" << endl;
+			player.intelligence++;
+			player.charisma = player.charisma + 2;
+		}
+
+		else if (race == "stout_halfling" || race == "STOUT_HALFLING")
+		{
+			cout << "Player Race: Stout Halfling" << endl;
+			player.dexterity = player.dexterity + 2;
+			player.constitution++;
+		}
+
+		else if (race == "orc" || race == "ORC")
+		{
+			cout << "Player Race: Orc" << endl;
+			player.strength = player.strength + 2;
+			player.constitution++;
+			player.intelligence = player.intelligence - 2;
+		}
+
+		else if (race == "savage_gnoll" || race == "SAVAGE_GNOLL")
+		{
+			cout << "Player Race: Savage Gnoll" << endl;
+			player.strength = player.strength + 2;
+			player.wisdom++;
+		}
+
+		else if (race == "dragonborn" || race == "DRAGONBORN")
+		{
+			cout << "Player Race: Dragonborn" << endl;
+			player.strength = player.strength + 2;
+			player.charisma++;
+		}
+
+		else
+		{
+			cout << "Invalid input! Make sure to choose "
+			     << "one of the listed races." << endl;
+			race = "none";
+		}
+	}
+	while (race == "none");
+
+	return;
+}
+
 int main()
 {
 	cout << "Generating a stat array for a lvl 3 character..." << endl;
 
 	rStatsPlayer();
+	raceBonuses();
 
 	cout << "Strength:     " << player.strength << endl;
 	cout << "Dexterity:    " << player.dexterity << endl;
@@ -169,3 +277,4 @@ int main()
 
 	return 0;
 }
+
