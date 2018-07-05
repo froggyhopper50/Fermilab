@@ -93,7 +93,6 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum1;
 	}
-	player.strength = stats[statNum1];
 
 	cout << "Which stat will be dexterity? "
 	     << "(Enter the number in parentheses next to the stat "
@@ -104,7 +103,6 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum2;
 	}
-	player.dexterity = stats[statNum2];
 
 	cout << "Which stat will be constitution? "
 	     << "(Enter the number in parentheses next to the stat "
@@ -115,7 +113,6 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum3;
 	}
-	player.constitution = stats[statNum3];
 
 	cout << "Which stat will be intelligence? "
 	     << "(Enter the number in parentheses next to the stat "
@@ -126,7 +123,6 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum4;
 	}
-	player.intelligence = stats[statNum4];
 
 	cout << "Which stat will be wisdom? "
 	     << "(Enter the number in parentheses next to the stat "
@@ -137,7 +133,6 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum5;
 	}
-	player.wisdom = stats[statNum5];
 
 	cout << "Which stat will be charisma? "
 	     << "(Enter the number in parentheses next to the stat "
@@ -148,6 +143,12 @@ void rStatsPlayer()
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum6;
 	}
+
+	player.strength = stats[statNum1];
+	player.dexterity = stats[statNum2];
+	player.constitution = stats[statNum3];
+	player.intelligence = stats[statNum4];
+	player.wisdom = stats[statNum5];
 	player.charisma = stats[statNum6];
 
 	return;
