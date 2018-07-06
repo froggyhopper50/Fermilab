@@ -11,12 +11,139 @@ class unit
 {
 	public:
 
+	int lvl;
+	string racePlayer;
+	string classPlayer;
+	int proficiency;
+	int passivePerception;
+
+	int HPinit;
+	int HPgain;
+	int HPmax;
+	int HPnow;
+	int HPdice;
+	int diceLeft;
 	int strength;
 	int dexterity;
 	int constitution;
 	int intelligence;
 	int wisdom;
 	int charisma;
+
+	int strMOD;
+	int dexMOD;
+	int conMOD;
+	int intMOD;
+	int wisMOD;
+	int chaMOD;
+
+	bool useLARM;
+	bool useMARM;
+	bool useHARM;
+	bool useSHIELD;
+	bool useSMW;
+	bool useSRW;
+	bool useMMW;
+	bool useMRW;
+
+	void shortRest()
+	{
+		string heal = "null";
+		int diceUsed;
+		int healing;
+		bool healed = false;
+		
+		if (HPnow < HPmax && diceLeft > 0)
+		{
+		do
+		{
+			cout << "Expend hit dice to heal? (y/n)" << endl;
+			cin >> heal;
+
+			if (heal == "y")
+			{
+				do
+				{
+					cout << "How many hit dice will "
+					     << "be used?" << endl;
+					cin >> diceUsed;
+
+					if (diceUsed <= diceLeft &&
+					    diceUsed >= 0)
+					{
+						healing = diceUsed * (
+							  rand()%HPdice
+							  + 1);
+						HPnow = HPnow + healing;
+						if (HPnow > HPmax)
+						{
+							HPnow = HPmax;
+						}
+						cout << "Healed for "
+						     << healing << endl;
+						cout << "HP: "
+						     << HPnow << endl;
+						diceLeft =
+						diceLeft - diceUsed;
+						cout << diceLeft
+						     << " hit dice remaining"
+						     << endl;
+
+						healed = true;
+					}
+					
+					else
+					{
+						cout << "Invalid input!" 
+						     << endl;
+					}
+				}
+				while (healed == false);
+				
+			}
+
+			else if (heal == "n")
+			{
+				cout << "No hit dice will be used to heal."
+				     << endl;
+			}
+
+			else
+			{
+				cout << "Invalid input!" << endl;
+				heal = "null";
+			}
+		}
+		while (heal == "null");
+		}
+
+		else
+		{
+			if (HPnow == HPmax)
+			{
+				cout << "Already at max health!" << endl;
+			}
+
+			if (diceLeft == 0)
+			{
+				cout << "No more hit dice left!" << endl;
+			}
+		}
+		return;
+	}
+
+	void damage(int dmg)
+	{
+		cout << "You took " << dmg << " points of damage!" << endl;
+		HPnow = HPnow - dmg;
+		if (HPnow < 0)
+		{
+			HPnow = 0;
+		}
+		cout << "HP: " << HPnow << endl;
+
+		return;
+	}
 };
 
 unit player;
@@ -88,7 +215,8 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum1;
-	while (statNum1 < 0 || statNum1 > 5)
+	while (statNum1 < 0 ||
+	       statNum1 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum1;
@@ -98,7 +226,9 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum2;
-	while (statNum2 == statNum1 || statNum2 < 0 || statNum2 > 5)
+	while (statNum2 == statNum1 || 
+	       statNum2 < 0 || 
+	       statNum2 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum2;
@@ -108,7 +238,10 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum3;
-	while (statNum3 == statNum2 || statNum3 == statNum1 || statNum3 < 0 || statNum3 > 5)
+	while (statNum3 == statNum2 || 
+	       statNum3 == statNum1 || 
+	       statNum3 < 0 || 
+	       statNum3 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum3;
@@ -118,7 +251,11 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum4;
-	while (statNum4 == statNum3 || statNum4 == statNum2 || statNum4 == statNum1 || statNum4 < 0 || statNum4 > 5)
+	while (statNum4 == statNum3 || 
+	       statNum4 == statNum2 || 
+	       statNum4 == statNum1 || 
+	       statNum4 < 0 || 
+	       statNum4 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum4;
@@ -128,7 +265,12 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum5;
-	while (statNum5 == statNum4 || statNum5 == statNum3 || statNum5 == statNum2 || statNum5 == statNum1 || statNum5 < 0 || statNum5 > 5)
+	while (statNum5 == statNum4 || 
+	       statNum5 == statNum3 || 
+	       statNum5 == statNum2 || 
+	       statNum5 == statNum1 || 
+	       statNum5 < 0 || 
+	       statNum5 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum5;
@@ -138,7 +280,13 @@ void rStatsPlayer()
 	     << "(Enter the number in parentheses next to the stat "
 	     << "which you desire)" << endl;
 	cin >> statNum6;
-	while (statNum6 == statNum5 || statNum6 == statNum4 || statNum6 == statNum3 || statNum6 == statNum2 || statNum6 == statNum1 || statNum6 < 0 || statNum6 > 5)
+	while (statNum6 == statNum5 || 
+	       statNum6 == statNum4 || 
+	       statNum6 == statNum3 || 
+	       statNum6 == statNum2 || 
+	       statNum6 == statNum1 || 
+	       statNum6 < 0 || 
+	       statNum6 > 5)
 	{
 		cout << "Invalid input! Please try again:" << endl;
 		cin >> statNum6;
@@ -188,9 +336,10 @@ void raceBonuses()
 			race = "none";
 		}
 
-		else if (race == "human" || race == "HUMAN")
+		else if (race == "human" || 
+			 race == "HUMAN")
 		{
-			cout << "Player Race: Human" << endl;
+			player.racePlayer = "Human";
 			player.strength++;
 			player.dexterity++;
 			player.constitution++;
@@ -199,52 +348,59 @@ void raceBonuses()
 			player.charisma++;
 		}
 
-		else if (race == "mountain_dwarf" || race == "MOUNTAIN_DWARF")
+		else if (race == "mountain_dwarf" || 
+			 race == "MOUNTAIN_DWARF")
 		{
-			cout << "Player Race: Mountain Dwarf" << endl;
+			player.racePlayer = "Mountain Dwarf";
 			player.strength = player.strength + 2;
 			player.constitution = player.constitution + 2;
 		}
 
-		else if (race == "wood_elf" || race == "WOOD_ELF")
+		else if (race == "wood_elf" || 
+			 race == "WOOD_ELF")
 		{
-			cout << "Player Race: Wood Elf" << endl;
+			player.racePlayer = "Wood Elf";
 			player.dexterity = player.dexterity + 2;
 			player.wisdom++;
 		}
 
-		else if (race == "tiefling" || race == "TIEFLING")
+		else if (race == "tiefling" || 
+			 race == "TIEFLING")
 		{
-			cout << "Player Race: Tiefling" << endl;
+			player.racePlayer = "Tiefling";
 			player.intelligence++;
 			player.charisma = player.charisma + 2;
 		}
 
-		else if (race == "stout_halfling" || race == "STOUT_HALFLING")
+		else if (race == "stout_halfling" || 
+			 race == "STOUT_HALFLING")
 		{
-			cout << "Player Race: Stout Halfling" << endl;
+			player.racePlayer = "Stout Halfling";
 			player.dexterity = player.dexterity + 2;
 			player.constitution++;
 		}
 
-		else if (race == "orc" || race == "ORC")
+		else if (race == "orc" || 
+			 race == "ORC")
 		{
-			cout << "Player Race: Orc" << endl;
+			player.racePlayer = "Orc";
 			player.strength = player.strength + 2;
 			player.constitution++;
 			player.intelligence = player.intelligence - 2;
 		}
 
-		else if (race == "savage_gnoll" || race == "SAVAGE_GNOLL")
+		else if (race == "savage_gnoll" || 
+			 race == "SAVAGE_GNOLL")
 		{
-			cout << "Player Race: Savage Gnoll" << endl;
+			player.racePlayer = "Savage Gnoll";
 			player.strength = player.strength + 2;
 			player.wisdom++;
 		}
 
-		else if (race == "dragonborn" || race == "DRAGONBORN")
+		else if (race == "dragonborn" || 
+			 race == "DRAGONBORN")
 		{
-			cout << "Player Race: Dragonborn" << endl;
+			player.racePlayer = "Dragonborn";
 			player.strength = player.strength + 2;
 			player.charisma++;
 		}
@@ -261,19 +417,171 @@ void raceBonuses()
 	return;
 }
 
+void setClass()
+{
+	string classType = "none";
+
+	do
+	{
+		cout << "Please enter the class of your character." << endl
+		     << "For a list of classes, type list:" << endl;
+		cin >> classType;
+
+		if (classType == "list")
+		{
+			cout << "PLAYABLE CLASSES" << endl;
+			cout << "FIGHTER" << endl;
+			
+			cout << "For more information on a given class, "
+			     << "type info_ followed by the class name." << endl
+			     << "For example, for more information on "
+			     << "the fighter class, enter:" << endl
+			     << "info_fighter" << endl;
+
+			classType = "none";
+		}
+
+		else if (classType == "fighter" || 
+			 classType == "FIGHTER")
+		{
+			player.classPlayer = "Fighter";
+		}
+
+		else if (classType == "info_fighter" || 
+			 classType == "info_FIGHTER")
+		{
+			cout << "A WELL ROUNDED HERO INTIMATELY FAMILIAR" <<
+			endl << "WITH COMBAT. MASTER OF ALL TYPES OF    " <<
+			endl << "WEAPONS AND ARMOR. EXTREMELY VERSATILE." <<
+				endl;
+
+			classType = "none";
+		}
+
+		else
+		{
+			cout << "Invalid input! Make sure to choose "
+			     << "one of the listed classes." << endl;
+			classType = "none";
+		}
+	}
+	while (classType == "none");
+
+	return;
+}
+
+void setFighter()
+{
+	player.HPinit = 10 + player.conMOD;
+	player.HPgain = 6 + player.conMOD;
+	player.HPdice = 10;
+	player.diceLeft = player.lvl;
+
+	player.useLARM = true;
+	player.useMARM = true;
+	player.useHARM = true;
+	player.useSHIELD = true;
+
+	player.useSMW = true;
+	player.useSRW = true;
+	player.useMMW = true;
+	player.useMRW = true;
+	
+	return;
+}
+
+void setHPmax()
+{
+	player.HPmax = player.HPinit + (player.HPgain * (player.lvl - 1));
+
+	return;
+}
+
+void setModifiers()
+{
+	player.strMOD = (player.strength / 2) - 5;
+	player.dexMOD = (player.dexterity / 2) - 5;
+	player.conMOD = (player.constitution / 2) - 5;
+	player.intMOD = (player.intelligence / 2) - 5;
+	player.wisMOD = (player.wisdom / 2) - 5;
+	player.chaMOD = (player.charisma / 2) - 5;
+	
+	return;
+}
+
+void setProf()
+{
+	player.proficiency = (player.lvl + 7) / 4;
+	
+	return;
+}
+
+void setPassivePerception()
+{
+	player.passivePerception = 10 + player.proficiency + player.wisMOD;
+	
+	return;
+}
+
+
 int main()
 {
 	cout << "Generating a stat array for a lvl 3 character..." << endl;
 
+	string userInput;
+
+	player.lvl = 3;
 	rStatsPlayer();
 	raceBonuses();
+	setModifiers();
+	setClass();
 
-	cout << "Strength:     " << player.strength << endl;
-	cout << "Dexterity:    " << player.dexterity << endl;
-	cout << "Constitution: " << player.constitution << endl;
-	cout << "Intelligence: " << player.intelligence << endl;
-	cout << "Wisdom:       " << player.wisdom << endl;
-	cout << "Charisma:     " << player.charisma << endl;
+	if (player.classPlayer == "Fighter")
+	{
+		setFighter();
+	}
+
+	setHPmax();
+	player.HPnow = player.HPmax;
+	setProf();
+	setPassivePerception();
+
+	cout << "Player: Lvl " << player.lvl << " " 
+	     << player.classPlayer << endl;
+	cout << "Race: " << player.racePlayer << endl;
+	cout << "Hit Points: " << player.HPmax << endl;
+	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
+	cout << "Proficiency Bonus: " << player.proficiency << endl;
+	cout << "Strength:     " << player.strength << 
+		" (" << player.strMOD << ")" << endl;
+	cout << "Dexterity:    " << player.dexterity << 
+		" (" << player.dexMOD << ")" << endl;
+	cout << "Constitution: " << player.constitution <<
+		" (" << player.conMOD << ")" << endl;
+	cout << "Intelligence: " << player.intelligence <<
+		" (" << player.intMOD << ")" << endl;
+	cout << "Wisdom:       " << player.wisdom << 
+		" (" << player.wisMOD << ")" << endl;
+	cout << "Charisma:     " << player.charisma <<
+		" (" << player.chaMOD << ")" << endl;
+	cout << "Passive Perception: " << player.passivePerception << endl;
+
+	srand((unsigned)time(NULL));
+
+	do
+	{
+		cin >> userInput;
+		if (userInput == "short_rest")
+		{
+			player.shortRest();
+		}
+
+		if (userInput == "damage")
+		{
+			player.damage(5);
+		}
+	}
+	while (userInput != "exit");
 
 	return 0;
 }
