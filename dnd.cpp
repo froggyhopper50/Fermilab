@@ -45,23 +45,41 @@ class unit
 	int chaST;
 
 	int acro;
+	bool acroP;
 	int anim;
+	bool animP;
 	int arca;
+	bool arcaP;
 	int athl;
+	bool athlP;
 	int dece;
+	bool deceP;
 	int hist;
+	bool histP;
 	int insi;
+	bool insiP;
 	int inti;
+	bool intiP;
 	int inve;
+	bool inveP;
 	int medi;
+	bool mediP;
 	int natu;
+	bool natuP;
 	int perc;
+	bool percP;
 	int perf;
+	bool perfP;
 	int pers;
+	bool persP;
 	int reli;
+	bool reliP;
 	int slei;
+	bool sleiP;
 	int stea;
+	bool steaP;
 	int surv;
+	bool survP;
 
 	bool useLARM;
 	bool useMARM;
@@ -518,7 +536,10 @@ void setFighter()
 	player.conST = player.conMOD + player.proficiency;
 	player.intST = player.intMOD;
 	player.wisST = player.wisMOD;
-	player.chaST = player.chaMOD;
+	player.chaST = player.chaMOD;	
+	
+	cout << "SKILLS" << endl
+	     << "(#0) ACROBATICS"
 	
 	return;
 }
@@ -538,6 +559,48 @@ void setModifiers()
 	player.intMOD = (player.intelligence / 2) - 5;
 	player.wisMOD = (player.wisdom / 2) - 5;
 	player.chaMOD = (player.charisma / 2) - 5;
+	
+	return;
+}
+
+void setSkills()
+{
+	player.acro = player.dexMOD;
+	if (player.acroP) {player.acro = player.acro + player.proficiency}
+	player.anim = player.wisMOD;
+	if (player.animP) {player.anim = player.anim + player.proficiency}
+	player.arca = player.intMOD;
+	if (player.arcaP) {player.arca = player.arca + player.proficiency}
+	player.athl = player.strMOD;
+	if (player.athlP) {player.athl = player.athl + player.proficiency}
+	player.dece = player.chaMOD;
+	if (player.deceP) {player.dece = player.dece + player.proficiency}
+	player.hist = player.intMOD;
+	if (player.histP) {player.hist = player.hist + player.proficiency}
+	player.insi = player.wisMOD;
+	if (player.insiP) {player.insi = player.insi + player.proficiency}
+	player.inti = player.chaMOD;
+	if (player.intiP) {player.inti = player.inti + player.proficiency}
+	player.inve = player.intMOD;
+	if (player.inveP) {player.inve = player.inve + player.proficiency}
+	player.medi = player.wisMOD;
+	if (player.mediP) {player.medi = player.medi + player.proficiency}
+	player.natu = player.intMOD;
+	if (player.natuP) {player.natu = player.natu + player.proficiency}
+	player.perc = player.wisMOD;
+	if (player.percP) {player.perc = player.perc + player.proficiency}
+	player.perf = player.chaMOD;
+	if (player.perfP) {player.perf = player.perf + player.proficiency}
+	player.pers = player.chaMOD;
+	if (player.persP) {player.pers = player.pers + player.proficiency}
+	player.reli = player.intMOD;
+	if (player.reliP) {player.reli = player.reli + player.proficiency}
+	player.slei = player.dexMOD;
+	if (player.sleiP) {player.slei = player.slei + player.proficiency}
+	player.stea = player.dexMOD;
+	if (player.steaP) {player.stea = player.stea + player.proficiency}
+	player.surv = player.wisMOD;
+	if (player.survP) {player.surv = player.surv + player.proficiency}
 	
 	return;
 }
@@ -576,6 +639,7 @@ int main()
 	}
 
 	setHPmax();
+	setSkills();
 	player.HPnow = player.HPmax;
 	setPassivePerception();
 
