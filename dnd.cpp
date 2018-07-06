@@ -37,6 +37,32 @@ class unit
 	int wisMOD;
 	int chaMOD;
 
+	int strST;
+	int dexST;
+	int conST;
+	int intST;
+	int wisST;
+	int chaST;
+
+	int acro;
+	int anim;
+	int arca;
+	int athl;
+	int dece;
+	int hist;
+	int insi;
+	int inti;
+	int inve;
+	int medi;
+	int natu;
+	int perc;
+	int perf;
+	int pers;
+	int reli;
+	int slei;
+	int stea;
+	int surv;
+
 	bool useLARM;
 	bool useMARM;
 	bool useHARM;
@@ -486,6 +512,13 @@ void setFighter()
 	player.useSRW = true;
 	player.useMMW = true;
 	player.useMRW = true;
+
+	player.strST = player.strMOD + player.proficiency;
+	player.dexST = player.dexMOD;
+	player.conST = player.conMOD + player.proficiency;
+	player.intST = player.intMOD;
+	player.wisST = player.wisMOD;
+	player.chaST = player.chaMOD;
 	
 	return;
 }
@@ -534,6 +567,7 @@ int main()
 	rStatsPlayer();
 	raceBonuses();
 	setModifiers();
+	setProf();
 	setClass();
 
 	if (player.classPlayer == "Fighter")
@@ -543,7 +577,6 @@ int main()
 
 	setHPmax();
 	player.HPnow = player.HPmax;
-	setProf();
 	setPassivePerception();
 
 	cout << "Player: Lvl " << player.lvl << " " 
@@ -553,17 +586,17 @@ int main()
 	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
 	cout << "Proficiency Bonus: " << player.proficiency << endl;
 	cout << "Strength:     " << player.strength << 
-		" (" << player.strMOD << ")" << endl;
+		" (" << player.strMOD << ") " << "ST " << player.strST << endl;
 	cout << "Dexterity:    " << player.dexterity << 
-		" (" << player.dexMOD << ")" << endl;
+		" (" << player.dexMOD << ") " << "ST " << player.dexST << endl;
 	cout << "Constitution: " << player.constitution <<
-		" (" << player.conMOD << ")" << endl;
+		" (" << player.conMOD << ") " << "ST " << player.conST << endl;
 	cout << "Intelligence: " << player.intelligence <<
-		" (" << player.intMOD << ")" << endl;
+		" (" << player.intMOD << ") " << "ST " << player.intST << endl;
 	cout << "Wisdom:       " << player.wisdom << 
-		" (" << player.wisMOD << ")" << endl;
+		" (" << player.wisMOD << ") " << "ST " << player.wisST << endl;
 	cout << "Charisma:     " << player.charisma <<
-		" (" << player.chaMOD << ")" << endl;
+		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
 	cout << "Passive Perception: " << player.passivePerception << endl;
 
 	srand((unsigned)time(NULL));
