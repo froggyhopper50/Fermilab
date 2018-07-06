@@ -559,15 +559,58 @@ void setFighter()
 		     << endl;
 		cin >> skill1;
 		
-		if (skill1 == 0) {player.acroP = true; skilled1 = "yes";}
-		else if (skill1 == 1) {player.animP = true; skilled1 = "yes";}
-		else if (skill1 == 2) {player.athlP = true; skilled1 = "yes";}
-		else if (skill1 == 3) {player.histP = true; skilled1 = "yes";}
-		else if (skill1 == 4) {player.insiP = true; skilled1 = "yes";}
-		else if (skill1 == 5) {player.intiP = true; skilled1 = "yes";}
-		else if (skill1 == 6) {player.percP = true; skilled1 = "yes";}
-		else if (skill1 == 7) {player.survP = true; skilled1 = "yes";}
-		else {cout << "Invalid input!" << endl;}
+		if (skill1 == 0) 
+		{
+			player.acroP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 1) 
+		{
+			player.animP = true; 
+			skilled1 = "yes";
+		}
+		
+		else if (skill1 == 2) 
+		{
+			player.athlP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 3) 
+		{
+			player.histP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 4) 
+		{
+			player.insiP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 5) 
+		{
+			player.intiP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 6) 
+		{
+			player.percP = true; 
+			skilled1 = "yes";
+		}
+
+		else if (skill1 == 7) 
+		{
+			player.survP = true; 
+			skilled1 = "yes";
+		}
+
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
 	}
 	while (skilled1 == "no");
 	
@@ -577,15 +620,58 @@ void setFighter()
 		     << endl;
 		cin >> skill2;
 		
-		if (skill2 == 0 && skill1 != skill2) {player.acroP = true; skilled2 = "yes";}
-		else if (skill2 == 1 && skill1 != skill2) {player.animP = true; skilled2 = "yes";}
-		else if (skill2 == 2 && skill1 != skill2) {player.athlP = true; skilled2 = "yes";}
-		else if (skill2 == 3 && skill1 != skill2) {player.histP = true; skilled2 = "yes";}
-		else if (skill2 == 4 && skill1 != skill2) {player.insiP = true; skilled2 = "yes";}
-		else if (skill2 == 5 && skill1 != skill2) {player.intiP = true; skilled2 = "yes";}
-		else if (skill2 == 6 && skill1 != skill2) {player.percP = true; skilled2 = "yes";}
-		else if (skill2 == 7 && skill1 != skill2) {player.survP = true; skilled2 = "yes";}
-		else {cout << "Invalid input!" << endl;}
+		if (skill2 == 0 && skill1 != skill2) 
+		{
+			player.acroP = true; 
+			skilled2 = "yes";
+		}
+		
+		else if (skill2 == 1 && skill1 != skill2) 
+		{
+			player.animP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 2 && skill1 != skill2) 
+		{
+			player.athlP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 3 && skill1 != skill2)
+		{
+			player.histP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 4 && skill1 != skill2) 
+		{
+			player.insiP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 5 && skill1 != skill2) 
+		{
+			player.intiP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 6 && skill1 != skill2) 
+		{
+			player.percP = true; 
+			skilled2 = "yes";
+		}
+
+		else if (skill2 == 7 && skill1 != skill2) 
+		{
+			player.survP = true; 
+			skilled2 = "yes";
+		}
+
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
 	}
 	while (skilled2 == "no");
 	
@@ -638,41 +724,95 @@ void clearSkills()
 void setSkills()
 {
 	player.acro = player.dexMOD;
-	if (player.acroP) {player.acro = player.acro + player.proficiency;}
+	if (player.acroP) 
+	{
+		player.acro = player.acro + player.proficiency;
+	}
 	player.anim = player.wisMOD;
-	if (player.animP) {player.anim = player.anim + player.proficiency;}
+	if (player.animP) 
+	{
+		player.anim = player.anim + player.proficiency;
+	}
 	player.arca = player.intMOD;
-	if (player.arcaP) {player.arca = player.arca + player.proficiency;}
+	if (player.arcaP) 
+	{
+		player.arca = player.arca + player.proficiency;
+	}
 	player.athl = player.strMOD;
-	if (player.athlP) {player.athl = player.athl + player.proficiency;}
+	if (player.athlP) 
+	{
+		player.athl = player.athl + player.proficiency;
+	}
 	player.dece = player.chaMOD;
-	if (player.deceP) {player.dece = player.dece + player.proficiency;}
+	if (player.deceP) 
+	{
+		player.dece = player.dece + player.proficiency;
+	}
 	player.hist = player.intMOD;
-	if (player.histP) {player.hist = player.hist + player.proficiency;}
+	if (player.histP) 
+	{
+		player.hist = player.hist + player.proficiency;
+	}
 	player.insi = player.wisMOD;
-	if (player.insiP) {player.insi = player.insi + player.proficiency;}
+	if (player.insiP) 
+	{
+		player.insi = player.insi + player.proficiency;
+	}
 	player.inti = player.chaMOD;
-	if (player.intiP) {player.inti = player.inti + player.proficiency;}
+	if (player.intiP) 
+	{
+		player.inti = player.inti + player.proficiency;
+	}
 	player.inve = player.intMOD;
-	if (player.inveP) {player.inve = player.inve + player.proficiency;}
+	if (player.inveP) 
+	{
+		player.inve = player.inve + player.proficiency;
+	}
 	player.medi = player.wisMOD;
-	if (player.mediP) {player.medi = player.medi + player.proficiency;}
+	if (player.mediP) 
+	{
+		player.medi = player.medi + player.proficiency;
+	}
 	player.natu = player.intMOD;
-	if (player.natuP) {player.natu = player.natu + player.proficiency;}
+	if (player.natuP) 
+	{
+		player.natu = player.natu + player.proficiency;
+	}
 	player.perc = player.wisMOD;
-	if (player.percP) {player.perc = player.perc + player.proficiency;}
+	if (player.percP) 
+	{
+		player.perc = player.perc + player.proficiency;
+	}
 	player.perf = player.chaMOD;
-	if (player.perfP) {player.perf = player.perf + player.proficiency;}
+	if (player.perfP) 
+	{
+		player.perf = player.perf + player.proficiency;
+	}
 	player.pers = player.chaMOD;
-	if (player.persP) {player.pers = player.pers + player.proficiency;}
+	if (player.persP) 
+	{
+		player.pers = player.pers + player.proficiency;
+	}
 	player.reli = player.intMOD;
-	if (player.reliP) {player.reli = player.reli + player.proficiency;}
+	if (player.reliP) 
+	{
+		player.reli = player.reli + player.proficiency;
+	}
 	player.slei = player.dexMOD;
-	if (player.sleiP) {player.slei = player.slei + player.proficiency;}
+	if (player.sleiP) 
+	{
+		player.slei = player.slei + player.proficiency;
+	}
 	player.stea = player.dexMOD;
-	if (player.steaP) {player.stea = player.stea + player.proficiency;}
+	if (player.steaP) 
+	{
+		player.stea = player.stea + player.proficiency;
+	}
 	player.surv = player.wisMOD;
-	if (player.survP) {player.surv = player.surv + player.proficiency;}
+	if (player.survP) 
+	{
+		player.surv = player.surv + player.proficiency;
+	}
 	
 	return;
 }
@@ -736,6 +876,15 @@ int main()
 		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
 	cout << "Passive Perception: " << player.passivePerception << endl;
 
+	cout << player.acro << endl;
+	cout << player.anim << endl;
+	cout << player.athl << endl;
+	cout << player.hist << endl;
+	cout << player.insi << endl;
+	cout << player.inti << endl;
+	cout << player.perc << endl;
+	cout << player.surv << endl;
+
 	srand((unsigned)time(NULL));
 
 	do
@@ -755,4 +904,3 @@ int main()
 
 	return 0;
 }
-
