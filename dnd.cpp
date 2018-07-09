@@ -241,7 +241,7 @@ class unit
 	cout << "Player: Lvl " << lvl << " " 
 	     << classPlayer << endl;
 	cout << "Race: " << racePlayer << endl;
-	cout << "Hit Points: " << HPmax << endl;
+	cout << "Hit Points: " << HPnow << "/" << HPmax << endl;
 	cout << "Hit Dice: " << diceLeft << "d" << HPdice << endl;
 	cout << "Weapon: " << weapon << " (" << atkDNum <<
 		"d" << atkDType << ")" << endl;
@@ -1083,30 +1083,7 @@ int main()
 	setSkills();
 	player.HPnow = player.HPmax;
 	setPassivePerception();
-
-	cout << "Player: Lvl " << player.lvl << " " 
-	     << player.classPlayer << endl;
-	cout << "Race: " << player.racePlayer << endl;
-	cout << "Hit Points: " << player.HPmax << endl;
-	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
-	cout << "Weapon: " << player.weapon << " (" << player.atkDNum <<
-		"d" << player.atkDType << ")" << endl;
-	cout << "Armor: " << player.armor << endl;
-	cout << "Armor Class: " << player.AC << endl;
-	cout << "Proficiency Bonus: " << player.proficiency << endl;
-	cout << "Strength:     " << player.strength << 
-		" (" << player.strMOD << ") " << "ST " << player.strST << endl;
-	cout << "Dexterity:    " << player.dexterity << 
-		" (" << player.dexMOD << ") " << "ST " << player.dexST << endl;
-	cout << "Constitution: " << player.constitution <<
-		" (" << player.conMOD << ") " << "ST " << player.conST << endl;
-	cout << "Intelligence: " << player.intelligence <<
-		" (" << player.intMOD << ") " << "ST " << player.intST << endl;
-	cout << "Wisdom:       " << player.wisdom << 
-		" (" << player.wisMOD << ") " << "ST " << player.wisST << endl;
-	cout << "Charisma:     " << player.charisma <<
-		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
-	cout << "Passive Perception: " << player.passivePerception << endl;
+	player.status();
 
 	do
 	{
