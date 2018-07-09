@@ -23,7 +23,9 @@ class unit
 	int HPnow;
 	int HPdice;
 	int diceLeft;
+	string armor;
 	int AC;
+	string weapon;
 	int atkDType;
 	int atkDNum;
 	int strength;
@@ -236,7 +238,59 @@ class unit
 
 	void equip()
 	{
-		//CODE GOES HERE
+		string equipThis;
+		cout << "What are you equipping?" << endl;
+		cin >> equipThis;
+		
+		if (equipThis == "chain" && armor != "chain")
+		{
+			chain.equip();
+		}
+		else if (equipThis == "chain" && armor == "chain")
+		{
+			cout << "Already equipped!" << endl;
+		}
+		else if (equipThis == "greatsword" && weapon != "greatsword")
+		{
+			greatsword.equip();
+		}
+		else if (equipThis == "greatsword" && weapon == "greatsword")
+		{
+			cout << "Already equipped!" << endl;
+		}
+		else
+		{
+			cout << "Invalid input!" << endl;
+		}
+		
+		return;
+	}
+	
+	void status()
+	{
+	cout << "Player: Lvl " << player.lvl << " " 
+	     << player.classPlayer << endl;
+	cout << "Race: " << player.racePlayer << endl;
+	cout << "Hit Points: " << player.HPmax << endl;
+	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
+	cout << "Weapon: " << player.weapon << " (" << player.atkDNum <<
+		"d" << player.atkDType << ")" << endl;
+	cout << "Armor: " << player.armor << endl;
+	cout << "Armor Class: " << player.AC << endl;
+	cout << "Proficiency Bonus: " << player.proficiency << endl;
+	cout << "Strength:     " << player.strength << 
+		" (" << player.strMOD << ") " << "ST " << player.strST << endl;
+	cout << "Dexterity:    " << player.dexterity << 
+		" (" << player.dexMOD << ") " << "ST " << player.dexST << endl;
+	cout << "Constitution: " << player.constitution <<
+		" (" << player.conMOD << ") " << "ST " << player.conST << endl;
+	cout << "Intelligence: " << player.intelligence <<
+		" (" << player.intMOD << ") " << "ST " << player.intST << endl;
+	cout << "Wisdom:       " << player.wisdom << 
+		" (" << player.wisMOD << ") " << "ST " << player.wisST << endl;
+	cout << "Charisma:     " << player.charisma <<
+		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
+	cout << "Passive Perception: " << player.passivePerception << endl;
 		
 		return;
 	}
@@ -253,6 +307,7 @@ class armor
 	bool isLARM;
 	bool isMARM;
 	bool isHARM;
+	string name;
 
 	void equip()
 	{
@@ -266,6 +321,7 @@ class armor
 				player.AC = player.AC + player.dexMOD;
 			}
 			cout << "Equipped!" << endl;
+			player.armor = name;
 		}
 		else
 		{
@@ -286,6 +342,7 @@ class weapon
 	bool isSRW;
 	bool isMMW;
 	bool isMRW;
+	string name;
 
 	void equip()
 	{
@@ -297,6 +354,7 @@ class weapon
 			player.atkDType = dType;
 			player.atkDNum = dNum;
 			cout << "Equipped!" << endl;
+			player.weapon = name;
 		}
 		else
 		{
@@ -307,8 +365,10 @@ class weapon
 };
 
 armor chain;
+armor none;
 
 weapon greatsword;
+weapon none;
 
 void setArmors()
 {
@@ -317,6 +377,14 @@ void setArmors()
 	chain.isLARM = false;
 	chain.isMARM = false;
 	chain.isHARM = true;
+	chain.name = "chain";
+	
+	none.ACmod = 0;
+	none.adDex = true;
+	none.isLARM = true;
+	none.isMARM = true;
+	none.isHARM = true;
+	none.name = "none";
 	
 	return;
 }
@@ -329,6 +397,15 @@ void setWeapons()
 	greatsword.isSRW = false;
 	greatsword.isMMW = true;
 	greatsword.isMRW = false;
+	greatsword.name = "greatsword";
+	
+	none.dType = 0;
+	none.dNum = 0;
+	none.isSMW = true;
+	none.isSRW = true;
+	none.isMMW = true;
+	none.isMRW = true;
+	none.name = "none";
 	
 	return;
 }
@@ -818,8 +895,8 @@ void setFighter()
 	}
 	while (skilled2 == "no");
 
-	chain.equip();
-	greatsword.equip();
+	none.equip();
+	none.equip();
 	
 	return;
 }
@@ -1012,6 +1089,9 @@ int main()
 	cout << "Race: " << player.racePlayer << endl;
 	cout << "Hit Points: " << player.HPmax << endl;
 	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
+	cout << "Weapon: " << player.weapon << " (" << player.atkDNum <<
+		"d" << player.atkDType << ")" << endl;
+	cout << "Armor: " << player.armor << endl;
 	cout << "Armor Class: " << player.AC << endl;
 	cout << "Proficiency Bonus: " << player.proficiency << endl;
 	cout << "Strength:     " << player.strength << 
@@ -1049,6 +1129,16 @@ int main()
 		if (userInput == "long_rest")
 		{
 			player.longRest();
+		}
+		
+		if (userInput == "equip")
+		{
+			player.equip();
+		}
+		
+		if (userInput == "status")
+		{
+			player.status();
 		}
 	}
 	while (userInput != "exit");
