@@ -236,61 +236,31 @@ class unit
 		return;
 	}
 
-	void equip()
-	{
-		string equipThis;
-		cout << "What are you equipping?" << endl;
-		cin >> equipThis;
-		
-		if (equipThis == "chain" && armor != "chain")
-		{
-			chain.equip();
-		}
-		else if (equipThis == "chain" && armor == "chain")
-		{
-			cout << "Already equipped!" << endl;
-		}
-		else if (equipThis == "greatsword" && weapon != "greatsword")
-		{
-			greatsword.equip();
-		}
-		else if (equipThis == "greatsword" && weapon == "greatsword")
-		{
-			cout << "Already equipped!" << endl;
-		}
-		else
-		{
-			cout << "Invalid input!" << endl;
-		}
-		
-		return;
-	}
-	
 	void status()
 	{
-	cout << "Player: Lvl " << player.lvl << " " 
-	     << player.classPlayer << endl;
-	cout << "Race: " << player.racePlayer << endl;
-	cout << "Hit Points: " << player.HPmax << endl;
-	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
-	cout << "Weapon: " << player.weapon << " (" << player.atkDNum <<
-		"d" << player.atkDType << ")" << endl;
-	cout << "Armor: " << player.armor << endl;
-	cout << "Armor Class: " << player.AC << endl;
-	cout << "Proficiency Bonus: " << player.proficiency << endl;
-	cout << "Strength:     " << player.strength << 
-		" (" << player.strMOD << ") " << "ST " << player.strST << endl;
-	cout << "Dexterity:    " << player.dexterity << 
-		" (" << player.dexMOD << ") " << "ST " << player.dexST << endl;
-	cout << "Constitution: " << player.constitution <<
-		" (" << player.conMOD << ") " << "ST " << player.conST << endl;
-	cout << "Intelligence: " << player.intelligence <<
-		" (" << player.intMOD << ") " << "ST " << player.intST << endl;
-	cout << "Wisdom:       " << player.wisdom << 
-		" (" << player.wisMOD << ") " << "ST " << player.wisST << endl;
-	cout << "Charisma:     " << player.charisma <<
-		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
-	cout << "Passive Perception: " << player.passivePerception << endl;
+	cout << "Player: Lvl " << lvl << " " 
+	     << classPlayer << endl;
+	cout << "Race: " << racePlayer << endl;
+	cout << "Hit Points: " << HPmax << endl;
+	cout << "Hit Dice: " << diceLeft << "d" << HPdice << endl;
+	cout << "Weapon: " << weapon << " (" << atkDNum <<
+		"d" << atkDType << ")" << endl;
+	cout << "Armor: " << armor << endl;
+	cout << "Armor Class: " << AC << endl;
+	cout << "Proficiency Bonus: " << proficiency << endl;
+	cout << "Strength:     " << strength << 
+		" (" << strMOD << ") " << "ST " << strST << endl;
+	cout << "Dexterity:    " << dexterity << 
+		" (" << dexMOD << ") " << "ST " << dexST << endl;
+	cout << "Constitution: " << constitution <<
+		" (" << conMOD << ") " << "ST " << conST << endl;
+	cout << "Intelligence: " << intelligence <<
+		" (" << intMOD << ") " << "ST " << intST << endl;
+	cout << "Wisdom:       " << wisdom << 
+		" (" << wisMOD << ") " << "ST " << wisST << endl;
+	cout << "Charisma:     " << charisma <<
+		" (" << chaMOD << ") " << "ST " << chaST << endl;
+	cout << "Passive Perception: " << passivePerception << endl;
 		
 		return;
 	}
@@ -407,6 +377,36 @@ void setWeapons()
 	none.isMRW = true;
 	none.name = "none";
 	
+	return;
+}
+
+void equip()
+{
+	string equipThis;
+	cout << "What are you equipping?" << endl;
+	cin >> equipThis;
+		
+	if (equipThis == "chain" && player.armor != "chain")
+		{
+			chain.equip();
+		}
+	else if (equipThis == "chain" && player.armor == "chain")
+		{
+			cout << "Already equipped!" << endl;
+		}
+	else if (equipThis == "greatsword" && player.weapon != "greatsword")
+		{
+			greatsword.equip();
+		}
+	else if (equipThis == "greatsword" && player.weapon == "greatsword")
+		{
+			cout << "Already equipped!" << endl;
+		}
+	else
+		{
+			cout << "Invalid input!" << endl;
+		}
+		
 	return;
 }
 
@@ -1133,7 +1133,7 @@ int main()
 		
 		if (userInput == "equip")
 		{
-			player.equip();
+			equip();
 		}
 		
 		if (userInput == "status")
