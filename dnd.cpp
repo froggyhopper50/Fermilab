@@ -335,7 +335,7 @@ class weapon
 };
 
 armor chain;
-armor none;
+armor nothing;
 
 weapon greatsword;
 weapon none;
@@ -349,12 +349,12 @@ void setArmors()
 	chain.isHARM = true;
 	chain.name = "chain";
 	
-	none.ACmod = 0;
-	none.adDex = true;
-	none.isLARM = true;
-	none.isMARM = true;
-	none.isHARM = true;
-	none.name = "none";
+	nothing.ACmod = 0;
+	nothing.adDex = true;
+	nothing.isLARM = true;
+	nothing.isMARM = true;
+	nothing.isHARM = true;
+	nothing.name = "nothing";
 	
 	return;
 }
@@ -895,7 +895,7 @@ void setFighter()
 	}
 	while (skilled2 == "no");
 
-	none.equip();
+	nothing.equip();
 	none.equip();
 	
 	return;
