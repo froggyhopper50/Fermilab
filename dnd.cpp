@@ -243,13 +243,26 @@ class armor
 	
 	int ACmod;
 	bool adDex;
+	bool isLARM;
+	bool isMARM;
+	bool isHARM;
 
 	void equip()
 	{
-		player.AC = ACmod;
-		if (adDex == true)
+		if (isLARM == player.useLARM ||
+		    isMARM == player.useMARM ||
+		    isHARM == player.useHARM)
 		{
-			player.AC = player.AC + player.dexMOD;
+			player.AC = ACmod;
+			if (adDex == true)
+			{
+				player.AC = player.AC + player.dexMOD;
+			}
+			cout << "Equipped!" << endl;
+		}
+		else
+		{
+			cout << "Cannot equip!" << endl;
 		}
 
 		return;
@@ -262,12 +275,26 @@ class weapon
 	
 	int dType;
 	int dNum;
+	bool isSMW;
+	bool isSRW;
+	bool isMMW;
+	bool isMRW;
 
 	void equip()
 	{
-		player.atkDType = dType;
-		player.atkDNum = dNum;
-
+		if (isSMW == player.useSMW ||
+		    isSRW == player.useSRW ||
+		    isMMW == player.useMMW ||
+		    isMRW == player.useMRW)
+		{
+			player.atkDType = dType;
+			player.atkDNum = dNum;
+			cout << "Equipped!" << endl;
+		}
+		else
+		{
+			cout << "Cannot equip!" << endl;
+		}
 		return;
 	}
 };
@@ -280,6 +307,9 @@ void setArmors()
 {
 	chain.ACmod = 16;
 	chain.adDex = false;
+	chain.isLARM = false;
+	chain.isMARM = false;
+	chain.isHARM = true;
 	
 	return;
 }
@@ -288,6 +318,10 @@ void setWeapons()
 {
 	greatsword.dType = 6;
 	greatsword.dNum = 2;
+	greatsword.isSMW = false;
+	greatsword.isSRW = false;
+	greatsword.isMMW = true;
+	greatsword.isMRW = false;
 	
 	return;
 }
