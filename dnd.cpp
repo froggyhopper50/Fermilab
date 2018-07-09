@@ -23,6 +23,9 @@ class unit
 	int HPnow;
 	int HPdice;
 	int diceLeft;
+	int AC;
+	int atkDType;
+	int atkDNum;
 	int strength;
 	int dexterity;
 	int constitution;
@@ -94,7 +97,7 @@ class unit
 	{
 		string heal = "null";
 		int diceUsed;
-		int healing;
+		int healing = 0;
 		bool healed = false;
 		
 		if (HPnow < HPmax && diceLeft > 0)
@@ -111,13 +114,20 @@ class unit
 					cout << "How many hit dice will "
 					     << "be used?" << endl;
 					cin >> diceUsed;
+					int roll;
 
 					if (diceUsed <= diceLeft &&
 					    diceUsed >= 0)
 					{
-						healing = diceUsed * (
-							  rand()%HPdice
-							  + 1);
+						for (int i=1; i<=diceUsed; i++)
+						{
+						roll = (rand()%(HPdice*100)/100
+							+1);
+						healing = healing+roll+conMOD;
+						cout << roll << endl;
+						}
+						cout << "Total Healing: "
+						     << healing << endl;
 						HPnow = HPnow + healing;
 						if (HPnow > HPmax)
 						{
@@ -188,9 +198,99 @@ class unit
 
 		return;
 	}
+
+	void attack()
+	{
+		int atkdmg = 0;
+		int roll;
+		for (int i=1; i<=atkDNum; i++)
+		{
+		roll = (rand()%(atkDType*100)/100+1);
+		atkdmg = atkdmg + roll;
+		cout << roll << endl;
+		}
+		atkdmg = atkdmg + strMOD;
+		cout << "Total Damage: "
+		     << atkdmg << endl;
+		cout << "Dealt " << atkdmg << " damage!" << endl;
+
+		return;
+	}
+
+	void longRest()
+	{
+		HPnow = HPmax;
+		diceLeft = diceLeft + lvl/2;
+
+		if (diceLeft > lvl)
+		{
+			diceLeft = lvl;
+		}
+
+		cout << "You feel well-rested." << endl;
+		cout << "HP: " << HPnow << endl;
+		cout << "Hit Dice: " << diceLeft << endl;
+		
+		return;
+	}
 };
 
 unit player;
+
+class armor
+{
+	public:
+	
+	int ACmod;
+	bool adDex;
+
+	void equip()
+	{
+		player.AC = ACmod;
+		if (adDex == true)
+		{
+			player.AC = player.AC + player.dexMOD;
+		}
+
+		return;
+	}
+};
+
+class weapon
+{
+	public:
+	
+	int dType;
+	int dNum;
+
+	void equip()
+	{
+		player.atkDType = dType;
+		player.atkDNum = dNum;
+
+		return;
+	}
+};
+
+armor chain;
+
+weapon greatsword;
+
+void setArmors()
+{
+	chain.ACmod = 16;
+	chain.adDex = false;
+	
+	return;
+}
+
+void setWeapons()
+{
+	greatsword.dType = 6;
+	greatsword.dNum = 2;
+	
+	return;
+}
 
 int rollStat()
 {
@@ -199,10 +299,10 @@ int rollStat()
 	int sum = 0;
 	int minRoll;
 	
-	d6Rolls[0] = rand()%6+1;
-	d6Rolls[1] = rand()%6+1;
-	d6Rolls[2] = rand()%6+1;
-	d6Rolls[3] = rand()%6+1;
+	d6Rolls[0] = (rand()%600)/100+1;
+	d6Rolls[1] = (rand()%600)/100+1;
+	d6Rolls[2] = (rand()%600)/100+1;
+	d6Rolls[3] = (rand()%600)/100+1;
 
 	for (int i=0; i<4; i++)
 	{
@@ -222,8 +322,6 @@ void rStatsPlayer()
 	int statNum1, statNum2, statNum3, statNum4, statNum5, statNum6;
 	bool goodArray = false;
 	string satisfied;
-
-	srand((unsigned)time(NULL));
 
 	do
 	{
@@ -555,7 +653,9 @@ void setFighter()
 	
 	do
 	{
-		cout << "Pick one of the above skills. To select a skill, enter the number in parentheses next to the desired skill:"
+		cout << "Pick one of the above skills. To select "
+		     << "a skill, enter the number in parentheses"
+		     << " next to the desired skill:"
 		     << endl;
 		cin >> skill1;
 		
@@ -616,7 +716,9 @@ void setFighter()
 	
 	do
 	{
-		cout << "Pick a second skill. To select a skill, enter the number in parentheses next to the desired skill:"
+		cout << "Pick a second skill. To select a skill, "
+		     << "enter the number in parentheses next to "
+		     << "the desired skill:"
 		     << endl;
 		cin >> skill2;
 		
@@ -674,6 +776,9 @@ void setFighter()
 		}
 	}
 	while (skilled2 == "no");
+
+	chain.equip();
+	greatsword.equip();
 	
 	return;
 }
@@ -836,10 +941,15 @@ int main()
 {
 	cout << "Generating a stat array for a lvl 3 character..." << endl;
 
+	srand((unsigned)time(NULL));
+
 	string userInput;
 
-	player.lvl = 3;
+	setArmors();
+	setWeapons();
 	clearSkills();
+
+	player.lvl = 3;
 	rStatsPlayer();
 	raceBonuses();
 	setModifiers();
@@ -861,6 +971,7 @@ int main()
 	cout << "Race: " << player.racePlayer << endl;
 	cout << "Hit Points: " << player.HPmax << endl;
 	cout << "Hit Dice: " << player.diceLeft << "d" << player.HPdice << endl;
+	cout << "Armor Class: " << player.AC << endl;
 	cout << "Proficiency Bonus: " << player.proficiency << endl;
 	cout << "Strength:     " << player.strength << 
 		" (" << player.strMOD << ") " << "ST " << player.strST << endl;
@@ -876,17 +987,6 @@ int main()
 		" (" << player.chaMOD << ") " << "ST " << player.chaST << endl;
 	cout << "Passive Perception: " << player.passivePerception << endl;
 
-	cout << player.acro << endl;
-	cout << player.anim << endl;
-	cout << player.athl << endl;
-	cout << player.hist << endl;
-	cout << player.insi << endl;
-	cout << player.inti << endl;
-	cout << player.perc << endl;
-	cout << player.surv << endl;
-
-	srand((unsigned)time(NULL));
-
 	do
 	{
 		cin >> userInput;
@@ -898,6 +998,16 @@ int main()
 		if (userInput == "damage")
 		{
 			player.damage(5);
+		}
+
+		if (userInput == "attack")
+		{
+			player.attack();
+		}
+
+		if (userInput == "long_rest")
+		{
+			player.longRest();
 		}
 	}
 	while (userInput != "exit");
