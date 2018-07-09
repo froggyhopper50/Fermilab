@@ -233,6 +233,13 @@ class unit
 		
 		return;
 	}
+
+	void equip()
+	{
+		//CODE GOES HERE
+		
+		return;
+	}
 };
 
 unit player;
