@@ -1,9 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <ctime>
-#include <cstdlib>
-#include <string>
-#include <algorithm>
+#include "/Users/jnken/Programs/stdc++.h"
 
 using namespace std;
 
@@ -50,41 +45,25 @@ class unit
 	int chaST;
 
 	int acro;
-	bool acroP;
 	int anim;
-	bool animP;
 	int arca;
-	bool arcaP;
 	int athl;
-	bool athlP;
 	int dece;
-	bool deceP;
 	int hist;
-	bool histP;
 	int insi;
-	bool insiP;
 	int inti;
-	bool intiP;
 	int inve;
-	bool inveP;
 	int medi;
-	bool mediP;
 	int natu;
-	bool natuP;
 	int perc;
-	bool percP;
 	int perf;
-	bool perfP;
 	int pers;
-	bool persP;
 	int reli;
-	bool reliP;
 	int slei;
-	bool sleiP;
 	int stea;
-	bool steaP;
 	int surv;
-	bool survP;
+	
+	map<string, bool> skills;
 
 	bool useLARM;
 	bool useMARM;
@@ -779,49 +758,49 @@ void setFighter()
 		
 		if (skill1 == 0) 
 		{
-			player.acroP = true; 
+			player.skills["acroP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 1) 
 		{
-			player.animP = true; 
+			player.skills["animP"] = true; 
 			skilled1 = "yes";
 		}
 		
 		else if (skill1 == 2) 
 		{
-			player.athlP = true; 
+			player.skills["athlP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 3) 
 		{
-			player.histP = true; 
+			player.skills["histP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 4) 
 		{
-			player.insiP = true; 
+			player.skills["insiP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 5) 
 		{
-			player.intiP = true; 
+			player.skills["intiP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 6) 
 		{
-			player.percP = true; 
+			player.skills["percP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 7) 
 		{
-			player.survP = true; 
+			player.skills["survP"] = true; 
 			skilled1 = "yes";
 		}
 
@@ -842,49 +821,49 @@ void setFighter()
 		
 		if (skill2 == 0 && skill1 != skill2) 
 		{
-			player.acroP = true; 
+			player.skills["acroP"] = true; 
 			skilled2 = "yes";
 		}
 		
 		else if (skill2 == 1 && skill1 != skill2) 
 		{
-			player.animP = true; 
+			player.skills["animP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 2 && skill1 != skill2) 
 		{
-			player.athlP = true; 
+			player.skills["athlP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 3 && skill1 != skill2)
 		{
-			player.histP = true; 
+			player.skills["histP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 4 && skill1 != skill2) 
 		{
-			player.insiP = true; 
+			player.skills["insiP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 5 && skill1 != skill2) 
 		{
-			player.intiP = true; 
+			player.skills["intiP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 6 && skill1 != skill2) 
 		{
-			player.percP = true; 
+			player.skills["percP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 7 && skill1 != skill2) 
 		{
-			player.survP = true; 
+			player.skills["survP"] = true; 
 			skilled2 = "yes";
 		}
 
@@ -920,119 +899,95 @@ void setModifiers()
 	return;
 }
 
-void clearSkills()
-{
-	player.acroP = false;
-	player.animP = false;
-	player.arcaP = false;
-	player.athlP = false;
-	player.deceP = false;
-	player.histP = false;
-	player.insiP = false;
-	player.intiP = false;
-	player.inveP = false;
-	player.mediP = false;
-	player.natuP = false;
-	player.percP = false;
-	player.perfP = false;
-	player.persP = false;
-	player.reliP = false;
-	player.sleiP = false;
-	player.steaP = false;
-	player.survP = false;
-	
-	return;
-}
-
 void setSkills()
 {
 	player.acro = player.dexMOD;
-	if (player.acroP) 
+	if (player.skills["acroP"]) 
 	{
 		player.acro = player.acro + player.proficiency;
 	}
 	player.anim = player.wisMOD;
-	if (player.animP) 
+	if (player.skills["animP"]) 
 	{
 		player.anim = player.anim + player.proficiency;
 	}
 	player.arca = player.intMOD;
-	if (player.arcaP) 
+	if (player.skills["arcaP"]) 
 	{
 		player.arca = player.arca + player.proficiency;
 	}
 	player.athl = player.strMOD;
-	if (player.athlP) 
+	if (player.skills["athlP"]) 
 	{
 		player.athl = player.athl + player.proficiency;
 	}
 	player.dece = player.chaMOD;
-	if (player.deceP) 
+	if (player.skills["deceP"]) 
 	{
 		player.dece = player.dece + player.proficiency;
 	}
 	player.hist = player.intMOD;
-	if (player.histP) 
+	if (player.skills["histP"]) 
 	{
 		player.hist = player.hist + player.proficiency;
 	}
 	player.insi = player.wisMOD;
-	if (player.insiP) 
+	if (player.skills["insiP"]) 
 	{
 		player.insi = player.insi + player.proficiency;
 	}
 	player.inti = player.chaMOD;
-	if (player.intiP) 
+	if (player.skills["intiP"]) 
 	{
 		player.inti = player.inti + player.proficiency;
 	}
 	player.inve = player.intMOD;
-	if (player.inveP) 
+	if (player.skills["inveP"]) 
 	{
 		player.inve = player.inve + player.proficiency;
 	}
 	player.medi = player.wisMOD;
-	if (player.mediP) 
+	if (player.skills["mediP"]) 
 	{
 		player.medi = player.medi + player.proficiency;
 	}
 	player.natu = player.intMOD;
-	if (player.natuP) 
+	if (player.skills["natuP"]) 
 	{
 		player.natu = player.natu + player.proficiency;
 	}
 	player.perc = player.wisMOD;
-	if (player.percP) 
+	if (player.skills["percP"]) 
 	{
 		player.perc = player.perc + player.proficiency;
 	}
 	player.perf = player.chaMOD;
-	if (player.perfP) 
+	if (player.skills["perfP"]) 
 	{
 		player.perf = player.perf + player.proficiency;
 	}
 	player.pers = player.chaMOD;
-	if (player.persP) 
+	if (player.skills["persP"]) 
 	{
 		player.pers = player.pers + player.proficiency;
 	}
 	player.reli = player.intMOD;
-	if (player.reliP) 
+	if (player.skills["reliP"]) 
 	{
 		player.reli = player.reli + player.proficiency;
 	}
 	player.slei = player.dexMOD;
-	if (player.sleiP) 
+	if (player.skills["sleiP"]) 
 	{
 		player.slei = player.slei + player.proficiency;
 	}
 	player.stea = player.dexMOD;
-	if (player.steaP) 
+	if (player.skills["steaP"]) 
 	{
 		player.stea = player.stea + player.proficiency;
 	}
 	player.surv = player.wisMOD;
-	if (player.survP) 
+	if (player.skills["survP"]) 
 	{
 		player.surv = player.surv + player.proficiency;
 	}
@@ -1065,7 +1020,6 @@ int main()
 
 	setArmors();
 	setWeapons();
-	clearSkills();
 
 	player.lvl = 3;
 	rStatsPlayer();
@@ -1084,6 +1038,10 @@ int main()
 	player.HPnow = player.HPmax;
 	setPassivePerception();
 	player.status();
+	
+	cout << "Acro: " << player.acro << endl;
+	cout << "Anim: " << player.anim << endl;
+	cout << "Inti: " << player.inti << endl;
 
 	do
 	{
