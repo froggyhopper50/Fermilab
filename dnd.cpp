@@ -1,4 +1,6 @@
 //WORK IN PROGRESS D&D CHARACTER CREATOR
+//REPLACE #include BELOW WITH INDIVIDUAL
+//HEADERS OR PERSONAL FILE PATH
 
 #include "/Users/jnken/Programs/stdc++.h"
 
