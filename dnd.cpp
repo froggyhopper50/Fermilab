@@ -758,49 +758,49 @@ void setFighter()
 		
 		if (skill1 == 0) 
 		{
-			player.skills['acroP'] = true; 
+			player.skills["acroP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 1) 
 		{
-			player.skills['animP'] = true; 
+			player.skills["animP"] = true; 
 			skilled1 = "yes";
 		}
 		
 		else if (skill1 == 2) 
 		{
-			player.skills['athlP'] = true; 
+			player.skills["athlP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 3) 
 		{
-			player.skills['histP'] = true; 
+			player.skills["histP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 4) 
 		{
-			player.skills['insiP'] = true; 
+			player.skills["insiP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 5) 
 		{
-			player.skills['intiP'] = true; 
+			player.skills["intiP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 6) 
 		{
-			player.skills['percP'] = true; 
+			player.skills["percP"] = true; 
 			skilled1 = "yes";
 		}
 
 		else if (skill1 == 7) 
 		{
-			player.skills['survP'] = true; 
+			player.skills["survP"] = true; 
 			skilled1 = "yes";
 		}
 
@@ -821,49 +821,49 @@ void setFighter()
 		
 		if (skill2 == 0 && skill1 != skill2) 
 		{
-			player.skills['acroP'] = true; 
+			player.skills["acroP"] = true; 
 			skilled2 = "yes";
 		}
 		
 		else if (skill2 == 1 && skill1 != skill2) 
 		{
-			player.skills['animP'] = true; 
+			player.skills["animP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 2 && skill1 != skill2) 
 		{
-			player.skills['athlP'] = true; 
+			player.skills["athlP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 3 && skill1 != skill2)
 		{
-			player.skills['histP'] = true; 
+			player.skills["histP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 4 && skill1 != skill2) 
 		{
-			player.skills['insiP'] = true; 
+			player.skills["insiP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 5 && skill1 != skill2) 
 		{
-			player.skills['intiP'] = true; 
+			player.skills["intiP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 6 && skill1 != skill2) 
 		{
-			player.skills['percP'] = true; 
+			player.skills["percP"] = true; 
 			skilled2 = "yes";
 		}
 
 		else if (skill2 == 7 && skill1 != skill2) 
 		{
-			player.skills['survP'] = true; 
+			player.skills["survP"] = true; 
 			skilled2 = "yes";
 		}
 
@@ -902,92 +902,92 @@ void setModifiers()
 void setSkills()
 {
 	player.acro = player.dexMOD;
-	if (player.skills['acroP']) 
+	if (player.skills["acroP"]) 
 	{
 		player.acro = player.acro + player.proficiency;
 	}
 	player.anim = player.wisMOD;
-	if (player.skills['animP']) 
+	if (player.skills["animP"]) 
 	{
 		player.anim = player.anim + player.proficiency;
 	}
 	player.arca = player.intMOD;
-	if (player.skills['arcaP']) 
+	if (player.skills["arcaP"]) 
 	{
 		player.arca = player.arca + player.proficiency;
 	}
 	player.athl = player.strMOD;
-	if (player.skills['athlP']) 
+	if (player.skills["athlP"]) 
 	{
 		player.athl = player.athl + player.proficiency;
 	}
 	player.dece = player.chaMOD;
-	if (player.skills['deceP']) 
+	if (player.skills["deceP"]) 
 	{
 		player.dece = player.dece + player.proficiency;
 	}
 	player.hist = player.intMOD;
-	if (player.skills['histP']) 
+	if (player.skills["histP"]) 
 	{
 		player.hist = player.hist + player.proficiency;
 	}
 	player.insi = player.wisMOD;
-	if (player.skills['insiP']) 
+	if (player.skills["insiP"]) 
 	{
 		player.insi = player.insi + player.proficiency;
 	}
 	player.inti = player.chaMOD;
-	if (player.skills['intiP']) 
+	if (player.skills["intiP"]) 
 	{
 		player.inti = player.inti + player.proficiency;
 	}
 	player.inve = player.intMOD;
-	if (player.skills['inveP']) 
+	if (player.skills["inveP"]) 
 	{
 		player.inve = player.inve + player.proficiency;
 	}
 	player.medi = player.wisMOD;
-	if (player.skills['mediP']) 
+	if (player.skills["mediP"]) 
 	{
 		player.medi = player.medi + player.proficiency;
 	}
 	player.natu = player.intMOD;
-	if (player.skills['natuP']) 
+	if (player.skills["natuP"]) 
 	{
 		player.natu = player.natu + player.proficiency;
 	}
 	player.perc = player.wisMOD;
-	if (player.skills['percP']) 
+	if (player.skills["percP"]) 
 	{
 		player.perc = player.perc + player.proficiency;
 	}
 	player.perf = player.chaMOD;
-	if (player.skills['perfP']) 
+	if (player.skills["perfP"]) 
 	{
 		player.perf = player.perf + player.proficiency;
 	}
 	player.pers = player.chaMOD;
-	if (player.skills['persP']) 
+	if (player.skills["persP"]) 
 	{
 		player.pers = player.pers + player.proficiency;
 	}
 	player.reli = player.intMOD;
-	if (player.skills['reliP']) 
+	if (player.skills["reliP"]) 
 	{
 		player.reli = player.reli + player.proficiency;
 	}
 	player.slei = player.dexMOD;
-	if (player.skills['sleiP']) 
+	if (player.skills["sleiP"]) 
 	{
 		player.slei = player.slei + player.proficiency;
 	}
 	player.stea = player.dexMOD;
-	if (player.skills['steaP']) 
+	if (player.skills["steaP"]) 
 	{
 		player.stea = player.stea + player.proficiency;
 	}
 	player.surv = player.wisMOD;
-	if (player.skills['survP']) 
+	if (player.skills["survP"]) 
 	{
 		player.surv = player.surv + player.proficiency;
 	}
