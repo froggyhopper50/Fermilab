@@ -283,12 +283,26 @@ class armor
 			{
 				player.AC = player.AC + player.dexMOD;
 			}
-			cout << "Equipped!" << endl;
+			if (name != "nothing")
+			{
+				cout << "Equipped!" << endl;
+			}
 			player.armor = name;
 		}
 		else
 		{
 			cout << "Cannot equip!" << endl;
+		}
+
+		return;
+	}
+
+	void get()
+	{
+		player.inventory[name] = true;
+		if (name != "nothing")
+		{
+			cout << "You got " << name << "!" << endl;
 		}
 
 		return;
@@ -310,13 +324,28 @@ class weapon
 		{
 			player.atkDType = dType;
 			player.atkDNum = dNum;
-			cout << "Equipped!" << endl;
+			if (name != "none")
+			{
+				cout << "Equipped!" << endl;
+			}
 			player.weapon = name;
 		}
 		else
 		{
 			cout << "Cannot equip!" << endl;
 		}
+
+		return;
+	}
+
+	void get()
+	{
+		player.inventory[name] = true;
+		if (name != "none")
+		{
+			cout << "You got " << name << "!" << endl;
+		}
+
 		return;
 	}
 };
@@ -872,13 +901,13 @@ void setFighter()
 	}
 	while (skilled2 == "no");
 
-	player.inventory["nothing"] = true;
-	player.inventory["none"] = true;
+	nothing.get();
+	none.get();
 	nothing.equip();
 	none.equip();
 	
-	player.inventory["greatsword"] = true;
-	player.inventory["chain"] = true;
+	greatsword.get();
+	chain.get();
 	
 	return;
 }
