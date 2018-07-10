@@ -70,6 +70,8 @@ class unit
 	map<string, bool> skills;
 
 	map<string, bool> profs;
+	
+	map<string, bool> inventory;
 
 	void shortRest()
 	{
@@ -255,7 +257,7 @@ class armor
 
 	void equip()
 	{
-		if (player.profs[type])
+		if (player.profs[type] && player.inventory[name])
 		{
 			player.AC = ACmod;
 			if (adDex == true)
@@ -285,7 +287,7 @@ class weapon
 
 	void equip()
 	{
-		if (player.profs[type])
+		if (player.profs[type] && player.inventory[name])
 		{
 			player.atkDType = dType;
 			player.atkDNum = dNum;
@@ -851,8 +853,13 @@ void setFighter()
 	}
 	while (skilled2 == "no");
 
+	player.inventory["nothing"] = true;
+	player.inventory["none"] = true;
 	nothing.equip();
 	none.equip();
+	
+	player.inventory["greatsword"] = true;
+	player.inventory["chain"] = true;
 	
 	return;
 }
