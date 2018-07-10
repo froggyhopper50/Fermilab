@@ -1038,10 +1038,6 @@ int main()
 	player.HPnow = player.HPmax;
 	setPassivePerception();
 	player.status();
-	
-	cout << "Acro: " << player.acro << endl;
-	cout << "Anim: " << player.anim << endl;
-	cout << "Inti: " << player.inti << endl;
 
 	do
 	{
