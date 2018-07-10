@@ -216,6 +216,23 @@ class unit
 		return;
 	}
 
+	void listInventory()
+	{
+		map<string, bool>::iterator pos;
+
+		cout << "INVENTORY" << endl;
+
+		for (pos = inventory.begin(); pos != inventory.end(); ++pos)
+		{
+			if (pos->first != "none" && pos->first != "nothing")
+			{
+				cout << "-" << pos->first << endl;
+			}
+		}
+		
+		return;
+	}
+
 	void status()
 	{
 	cout << "Player: Lvl " << lvl << " " 
@@ -1056,6 +1073,11 @@ int main()
 		if (userInput == "status")
 		{
 			player.status();
+		}
+
+		if (userInput == "inventory")
+		{
+			player.listInventory();
 		}
 	}
 	while (userInput != "exit");
