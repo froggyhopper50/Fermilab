@@ -67,6 +67,8 @@ class unit
 	
 	map<string, bool> skills;
 
+	map<string, bool> profs;
+	/*
 	bool useLARM;
 	bool useMARM;
 	bool useHARM;
@@ -75,7 +77,7 @@ class unit
 	bool useSRW;
 	bool useMMW;
 	bool useMRW;
-
+	*/
 	void shortRest()
 	{
 		string heal = "null";
@@ -255,16 +257,12 @@ class armor
 	
 	int ACmod;
 	bool adDex;
-	bool isLARM;
-	bool isMARM;
-	bool isHARM;
+	string type;
 	string name;
 
 	void equip()
 	{
-		if (isLARM == player.useLARM ||
-		    isMARM == player.useMARM ||
-		    isHARM == player.useHARM)
+		if (player.profs[type])
 		{
 			player.AC = ACmod;
 			if (adDex == true)
@@ -289,18 +287,12 @@ class weapon
 	
 	int dType;
 	int dNum;
-	bool isSMW;
-	bool isSRW;
-	bool isMMW;
-	bool isMRW;
+	string type;
 	string name;
 
 	void equip()
 	{
-		if (isSMW == player.useSMW ||
-		    isSRW == player.useSRW ||
-		    isMMW == player.useMMW ||
-		    isMRW == player.useMRW)
+		if (player.profs[type])
 		{
 			player.atkDType = dType;
 			player.atkDNum = dNum;
@@ -325,16 +317,12 @@ void setArmors()
 {
 	chain.ACmod = 16;
 	chain.adDex = false;
-	chain.isLARM = false;
-	chain.isMARM = false;
-	chain.isHARM = true;
+	chain.type = "HARM";
 	chain.name = "chain";
 	
 	nothing.ACmod = 0;
 	nothing.adDex = true;
-	nothing.isLARM = true;
-	nothing.isMARM = true;
-	nothing.isHARM = true;
+	nothing.type = "LARM";
 	nothing.name = "nothing";
 	
 	return;
@@ -344,18 +332,12 @@ void setWeapons()
 {
 	greatsword.dType = 6;
 	greatsword.dNum = 2;
-	greatsword.isSMW = false;
-	greatsword.isSRW = false;
-	greatsword.isMMW = true;
-	greatsword.isMRW = false;
+	greatsword.type = "MMW";
 	greatsword.name = "greatsword";
 	
 	none.dType = 0;
 	none.dNum = 0;
-	none.isSMW = true;
-	none.isSRW = true;
-	none.isMMW = true;
-	none.isMRW = true;
+	none.type = "SMW";
 	none.name = "none";
 	
 	return;
@@ -718,15 +700,15 @@ void setFighter()
 	player.HPdice = 10;
 	player.diceLeft = player.lvl;
 
-	player.useLARM = true;
-	player.useMARM = true;
-	player.useHARM = true;
-	player.useSHIELD = true;
+	player.profs["LARM"] = true;
+	player.profs["MARM"] = true;
+	player.profs["HARM"] = true;
+	player.profs["SHIELD"] = true;
 
-	player.useSMW = true;
-	player.useSRW = true;
-	player.useMMW = true;
-	player.useMRW = true;
+	player.profs["SMW"] = true;
+	player.profs["SRW"] = true;
+	player.profs["MMW"] = true;
+	player.profs["MRW"] = true;
 
 	player.strST = player.strMOD + player.proficiency;
 	player.dexST = player.dexMOD;
