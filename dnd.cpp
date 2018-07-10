@@ -68,16 +68,7 @@ class unit
 	map<string, bool> skills;
 
 	map<string, bool> profs;
-	/*
-	bool useLARM;
-	bool useMARM;
-	bool useHARM;
-	bool useSHIELD;
-	bool useSMW;
-	bool useSRW;
-	bool useMMW;
-	bool useMRW;
-	*/
+
 	void shortRest()
 	{
 		string heal = "null";
