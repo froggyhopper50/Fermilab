@@ -1,9 +1,4 @@
-#include <iostream>
-#include <cmath>
-#include <ctime>
-#include <cstdlib>
-#include <string>
-#include <algorithm>
+#include "/Users/jnken/Programs/stdc++.h"
 
 using namespace std;
 
