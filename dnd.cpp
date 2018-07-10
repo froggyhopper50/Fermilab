@@ -354,6 +354,7 @@ armor chain;
 armor nothing;
 
 weapon greatsword;
+weapon longbow;
 weapon none;
 
 void setArmors()
@@ -377,6 +378,11 @@ void setWeapons()
 	greatsword.dNum = 2;
 	greatsword.type = "MMW";
 	greatsword.name = "greatsword";
+
+	longbow.dType = 8;
+	longbow.dNum = 1;
+	longbow.type = "MRW";
+	longbow.name = "longbow";
 	
 	none.dType = 0;
 	none.dNum = 0;
@@ -405,6 +411,14 @@ void equip()
 			greatsword.equip();
 		}
 	else if (equipThis == "greatsword" && player.weapon == "greatsword")
+		{
+			cout << "Already equipped!" << endl;
+		}
+	else if (equipThis == "longbow" && player.weapon != "longbow")
+		{
+			longbow.equip();
+		}
+	else if (equipThis == "longbow" && player.weapon == "longbow")
 		{
 			cout << "Already equipped!" << endl;
 		}
@@ -907,6 +921,7 @@ void setFighter()
 	none.equip();
 	
 	greatsword.get();
+	longbow.get();
 	chain.get();
 	
 	return;
