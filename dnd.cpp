@@ -1,3 +1,5 @@
+//WORK IN PROGRESS D&D CHARACTER CREATOR
+
 #include "/Users/jnken/Programs/stdc++.h"
 
 using namespace std;
