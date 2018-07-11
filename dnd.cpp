@@ -355,7 +355,7 @@ class weapon
 	}
 };
 
-class shield
+class shld
 {
 	public:
 	
@@ -363,7 +363,8 @@ class shield
 	
 	void equip()
 	{
-		if (player.profs[type] && player.inventory[name] && player.shield == false)
+		if (player.profs["SHIELD"] && player.inventory[name] &&
+		    player.shield == false)
 		{
 			player.AC = player.AC + 2;
 			player.shield = true;
@@ -408,7 +409,7 @@ armor chain;
 armor leather;
 armor nothing;
 
-shield wood;
+shld shield;
 
 weapon greatsword;
 weapon battleaxe;
@@ -439,7 +440,7 @@ void setArmors()
 
 void setShields()
 {
-	wood.name = "wood";
+	shield.name = "shield";
 	
 	return;
 }
@@ -501,9 +502,9 @@ void equip()
 		{
 			cout << "Already equipped!" << endl;
 		}
-	else if (equipThis == "wood")
+	else if (equipThis == "shield")
 		{
-			wood.equip();
+			shield.equip();
 		}
 	else if (equipThis == "greatsword" && player.weapon != "greatsword")
 		{
@@ -529,11 +530,13 @@ void equip()
 		{
 			cout << "Already equipped!" << endl;
 		}
-	else if (equipThis == "light_crossbow" && player.weapon != "light_crossbow")
+	else if (equipThis == "light_crossbow" && 
+		 player.weapon != "light_crossbow")
 		{
 			lightCrossbow.equip();
 		}
-	else if (equipThis == "light_crossbow" && player.weapon == "light_crossbow")
+	else if (equipThis == "light_crossbow" && 
+		 player.weapon == "light_crossbow")
 		{
 			cout << "Already equipped!" << endl;
 		}
@@ -559,9 +562,9 @@ void remove()
 	cout << "What are you removing?" << endl;
 	cin >> removeThis;
 	
-	if (removeThis == "wood")
+	if (removeThis == "shield")
 	{
-		wood.remove();
+		shield.remove();
 	}
 	else
 	{
@@ -1067,7 +1070,7 @@ void setFighter()
 	
 	chain.get();
 	leather.get();
-	wood.get();
+	shield.get();
 	
 	return;
 }
