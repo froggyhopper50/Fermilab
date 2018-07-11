@@ -244,7 +244,15 @@ class unit
 	cout << "Weapon: " << weapon << " (" << atkDNum <<
 		"d" << atkDType << ")" << endl;
 	cout << "Armor: " << armor << endl;
-	cout << "Armor Class: " << AC << endl;
+	cout << "Armor Class: " << AC;
+	if (shield)
+	{
+		cout << " (SHIELD)" << endl;
+	}
+	else
+	{
+		cout << endl;
+	}
 	cout << "Proficiency Bonus: " << proficiency << endl;
 	cout << "Strength:     " << strength << 
 		" (" << strMOD << ") " << "ST " << strST << endl;
