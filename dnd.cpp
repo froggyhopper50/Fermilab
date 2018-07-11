@@ -29,6 +29,7 @@ class unit
 	string weapon;
 	int atkDType;
 	int atkDNum;
+	bool shield;
 	int strength;
 	int dexterity;
 	int constitution;
@@ -283,6 +284,10 @@ class armor
 			{
 				player.AC = player.AC + player.dexMOD;
 			}
+			if (player.shield == true)
+			{
+				player.AC = player.AC + 2;
+			}
 			if (name != "nothing")
 			{
 				cout << "Equipped!" << endl;
@@ -350,9 +355,60 @@ class weapon
 	}
 };
 
+class shield
+{
+	public:
+	
+	string name;
+	
+	void equip()
+	{
+		if (player.profs[type] && player.inventory[name] && player.shield == false)
+		{
+			player.AC = player.AC + 2;
+			player.shield = true;
+			cout << "Equipped!" << endl;
+		}
+		else if (player.shield == true)
+		{
+			cout << "Shield already equipped!" << endl;
+		}
+		else
+		{
+			cout << "Cannot equip!" << endl;
+		}
+
+		return;
+	}
+	
+	void remove()
+	{
+		if (player.shield == true)
+		{
+			player.AC = player.AC - 2;
+			player.shield = false;
+			cout << "Removed!" << endl;
+		}
+		else
+		{
+			cout << "No shield equipped!" << endl;
+		}
+	}
+
+	void get()
+	{
+		player.inventory[name] = true;
+		cout << "You got " << name << "!" << endl;
+		
+		return;
+	}
+};
+
 armor chain;
 armor leather;
 armor nothing;
+
+shield wood;
 
 weapon greatsword;
 weapon battleaxe;
@@ -377,6 +433,13 @@ void setArmors()
 	nothing.adDex = true;
 	nothing.type = "LARM";
 	nothing.name = "nothing";
+	
+	return;
+}
+
+void setShields()
+{
+	wood.name = "wood";
 	
 	return;
 }
@@ -438,6 +501,10 @@ void equip()
 		{
 			cout << "Already equipped!" << endl;
 		}
+	else if (equipThis == "wood")
+		{
+			wood.equip();
+		}
 	else if (equipThis == "greatsword" && player.weapon != "greatsword")
 		{
 			greatsword.equip();
@@ -484,6 +551,22 @@ void equip()
 		}
 		
 	return;
+}
+
+void remove()
+{
+	string removeThis;
+	cout << "What are you removing?" << endl;
+	cin >> removeThis;
+	
+	if (removeThis == "wood")
+	{
+		wood.remove();
+	}
+	else
+	{
+		cout << "Invalid input!" << endl;
+	}
 }
 
 int rollStat()
@@ -984,6 +1067,7 @@ void setFighter()
 	
 	chain.get();
 	leather.get();
+	wood.get();
 	
 	return;
 }
@@ -1127,6 +1211,7 @@ int main()
 	string userInput;
 
 	setArmors();
+	setShields();
 	setWeapons();
 
 	player.lvl = 3;
@@ -1173,6 +1258,11 @@ int main()
 		if (userInput == "equip")
 		{
 			equip();
+		}
+		
+		if (userInput == "remove")
+		{
+			remove();
 		}
 		
 		if (userInput == "status")
