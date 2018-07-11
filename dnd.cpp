@@ -30,6 +30,8 @@ class unit
 	int atkDType;
 	int atkDNum;
 	bool shield;
+	int usedHands;
+	
 	int strength;
 	int dexterity;
 	int constitution;
@@ -322,47 +324,6 @@ class armor
 	}
 };
 
-class weapon
-{
-	public:
-	
-	int dType;
-	int dNum;
-	string type;
-	string name;
-
-	void equip()
-	{
-		if (player.profs[type] && player.inventory[name])
-		{
-			player.atkDType = dType;
-			player.atkDNum = dNum;
-			if (name != "none")
-			{
-				cout << "Equipped!" << endl;
-			}
-			player.weapon = name;
-		}
-		else
-		{
-			cout << "Cannot equip!" << endl;
-		}
-
-		return;
-	}
-
-	void get()
-	{
-		player.inventory[name] = true;
-		if (name != "none")
-		{
-			cout << "You got " << name << "!" << endl;
-		}
-
-		return;
-	}
-};
-
 class shld
 {
 	public:
@@ -372,7 +333,7 @@ class shld
 	void equip()
 	{
 		if (player.profs["SHIELD"] && player.inventory[name] &&
-		    player.shield == false)
+		    player.shield == false && player.hands < 2)
 		{
 			player.AC = player.AC + 2;
 			player.shield = true;
@@ -381,6 +342,10 @@ class shld
 		else if (player.shield == true)
 		{
 			cout << "Shield already equipped!" << endl;
+		}
+		else if (player.hands == 2)
+		{
+			cout << "Already using both hands!" << endl;
 		}
 		else
 		{
@@ -409,6 +374,54 @@ class shld
 		player.inventory[name] = true;
 		cout << "You got " << name << "!" << endl;
 		
+		return;
+	}
+};
+
+class weapon
+{
+	public:
+	
+	int dType;
+	int dNum;
+	int hands;
+	string type;
+	string name;
+
+	void equip()
+	{
+		if (player.profs[type] && player.inventory[name])
+		{
+			player.atkDType = dType;
+			player.atkDNum = dNum;
+			player.hands = hands;
+			if (name != "none")
+			{
+				cout << "Equipped!" << endl;
+			}
+			player.weapon = name;
+			
+			if (player.hands == 2)
+			{
+				shield.remove();
+			}
+		}
+		else
+		{
+			cout << "Cannot equip!" << endl;
+		}
+
+		return;
+	}
+
+	void get()
+	{
+		player.inventory[name] = true;
+		if (name != "none")
+		{
+			cout << "You got " << name << "!" << endl;
+		}
+
 		return;
 	}
 };
@@ -457,31 +470,37 @@ void setWeapons()
 {
 	greatsword.dType = 6;
 	greatsword.dNum = 2;
+	greatsword.hands = 2;
 	greatsword.type = "MMW";
 	greatsword.name = "greatsword";
 	
 	battleaxe.dType = 8;
 	battleaxe.dNum = 1;
+	battleaxe.hands = 1;
 	battleaxe.type = "MMW";
 	battleaxe.name = "battleaxe";
 
 	longbow.dType = 8;
 	longbow.dNum = 1;
+	longbow.hands = 2;
 	longbow.type = "MRW";
 	longbow.name = "longbow";
 	
 	lightCrossbow.dType = 8;
 	lightCrossbow.dNum = 1;
+	lightCrossbow.hands = 2;
 	lightCrossbow.type = "SRW";
 	lightCrossbow.name = "light_crossbow";
 	
 	handaxe.dType = 6;
 	handaxe.dNum = 1;
+	handaxe.hands = 1;
 	handaxe.type = "SMW";
 	handaxe.name = "handaxe";
 	
 	none.dType = 0;
 	none.dNum = 0;
+	none.hands = 0;
 	none.type = "SMW";
 	none.name = "none";
 	
