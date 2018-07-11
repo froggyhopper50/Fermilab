@@ -347,6 +347,10 @@ class shld
 		{
 			cout << "Already using both hands!" << endl;
 		}
+		else if (player.inventory[name] == false)
+		{
+			cout << "You don't have a shield!" << endl;
+		}
 		else
 		{
 			cout << "Cannot equip!" << endl;
