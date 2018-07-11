@@ -30,7 +30,7 @@ class unit
 	int atkDType;
 	int atkDNum;
 	bool shield;
-	int usedHands;
+	int hands;
 	
 	int strength;
 	int dexterity;
@@ -378,6 +378,8 @@ class shld
 	}
 };
 
+shld shield;
+
 class weapon
 {
 	public:
@@ -401,7 +403,7 @@ class weapon
 			}
 			player.weapon = name;
 			
-			if (player.hands == 2)
+			if (player.hands == 2 && player.shield == true)
 			{
 				shield.remove();
 			}
@@ -429,8 +431,6 @@ class weapon
 armor chain;
 armor leather;
 armor nothing;
-
-shld shield;
 
 weapon greatsword;
 weapon battleaxe;
