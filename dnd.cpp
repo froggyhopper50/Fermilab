@@ -1089,15 +1089,126 @@ void setFighter()
 	nothing.equip();
 	none.equip();
 	
-	greatsword.get();
-	battleaxe.get();
-	longbow.get();
-	lightCrossbow.get();
-	handaxe.get();
+	bool equipped = false;
+	int choice;
 	
-	chain.get();
-	leather.get();
-	shield.get();
+	cout << "(#0) chain mail" << endl;
+	cout << "(#1) leather armor, longbow" << endl;
+	
+	do
+	{
+		cout << "Enter the corresponding number in "
+		     << "parentheses to receive one of the "
+		     << "above: " << endl;
+		cin >> choice;
+		
+		if (choice == 0) 
+		{
+			chain.get(); 
+			equipped = true;
+		}
+		else if (choice == 1)
+		{
+			leather.get();
+			longbow.get();
+			equipped = true;
+		}
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
+	}
+	while (equipped == false);
+	
+	equipped = false;
+	
+	cout << "(#0) battleaxe, shield" << endl;
+	cout << "(#1) greatsword" << endl;
+	
+	do
+	{
+		cout << "Enter the corresponding number in "
+		     << "parentheses to receive one of the "
+		     << "above: " << endl;
+		cin >> choice;
+		
+		if (choice == 0) 
+		{
+			battleaxe.get();
+			shield.get();
+			equipped = true;
+		}
+		else if (choice == 1)
+		{
+			greatsword.get();
+			equipped = true;
+		}
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
+	}
+	while (equipped == false);
+	
+	equipped = false;
+	
+	cout << "(#0) light crossbow" << endl;
+	cout << "(#1) handaxe" << endl;
+	
+	do
+	{
+		cout << "Enter the corresponding number in "
+		     << "parentheses to receive one of the "
+		     << "above: " << endl;
+		cin >> choice;
+		
+		if (choice == 0) 
+		{
+			lightCrossbow.get();
+			equipped = true;
+		}
+		else if (choice == 1)
+		{
+			handaxe.get();
+			equipped = true;
+		}
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
+	}
+	while (equipped == false);
+	
+	equipped = false;
+	
+	cout << "(#0) dungeoneer's pack" << endl;
+	cout << "(#1) explorer's pack" << endl;
+	
+	do
+	{
+		cout << "Enter the corresponding number in "
+		     << "parentheses to receive one of the "
+		     << "above: " << endl;
+		cin >> choice;
+		
+		if (choice == 0) 
+		{
+			player.inventory["d_pack"] = true;
+			cout << "You got d_pack!" << endl;
+			equipped = true;
+		}
+		else if (choice == 1)
+		{
+			player.inventory["e_pack"] = true;
+			cout << "You got e_pack!" << endl;
+			equipped = true;
+		}
+		else 
+		{
+			cout << "Invalid input!" << endl;
+		}
+	}
+	while (equipped == false);
 	
 	return;
 }
