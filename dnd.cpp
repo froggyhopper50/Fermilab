@@ -351,10 +351,14 @@ class weapon
 };
 
 armor chain;
+armor leather;
 armor nothing;
 
 weapon greatsword;
+weapon battleaxe;
 weapon longbow;
+weapon lightCrossbow;
+weapon handaxe;
 weapon none;
 
 void setArmors()
@@ -363,6 +367,11 @@ void setArmors()
 	chain.adDex = false;
 	chain.type = "HARM";
 	chain.name = "chain";
+	
+	leather.ACmod = 11;
+	leather.adDex = true;
+	leather.type = "LARM";
+	leather.name = "leather";
 	
 	nothing.ACmod = 0;
 	nothing.adDex = true;
@@ -378,11 +387,26 @@ void setWeapons()
 	greatsword.dNum = 2;
 	greatsword.type = "MMW";
 	greatsword.name = "greatsword";
+	
+	battleaxe.dType = 8;
+	battleaxe.dNum = 1;
+	battleaxe.type = "MMW";
+	battleaxe.name = "battleaxe";
 
 	longbow.dType = 8;
 	longbow.dNum = 1;
 	longbow.type = "MRW";
 	longbow.name = "longbow";
+	
+	lightCrossbow.dType = 8;
+	lightCrossbow.dNum = 1;
+	lightCrossbow.type = "SRW";
+	lightCrossbow.name = "light_crossbow";
+	
+	handaxe.dType = 6;
+	handaxe.dNum = 1;
+	handaxe.type = "SMW";
+	handaxe.name = "handaxe";
 	
 	none.dType = 0;
 	none.dNum = 0;
@@ -406,6 +430,14 @@ void equip()
 		{
 			cout << "Already equipped!" << endl;
 		}
+	else if (equipThis == "leather" && player.armor != "leather")
+		{
+			leather.equip();
+		}
+	else if (equipThis == "leather" && player.armor == "leather")
+		{
+			cout << "Already equipped!" << endl;
+		}
 	else if (equipThis == "greatsword" && player.weapon != "greatsword")
 		{
 			greatsword.equip();
@@ -414,11 +446,35 @@ void equip()
 		{
 			cout << "Already equipped!" << endl;
 		}
+	else if (equipThis == "battleaxe" && player.weapon != "battleaxe")
+		{
+			battleaxe.equip();
+		}
+	else if (equipThis == "battleaxe" && player.weapon == "battleaxe")
+		{
+			cout << "Already equipped!" << endl;
+		}
 	else if (equipThis == "longbow" && player.weapon != "longbow")
 		{
 			longbow.equip();
 		}
 	else if (equipThis == "longbow" && player.weapon == "longbow")
+		{
+			cout << "Already equipped!" << endl;
+		}
+	else if (equipThis == "light_crossbow" && player.weapon != "light_crossbow")
+		{
+			lightCrossbow.equip();
+		}
+	else if (equipThis == "light_crossbow" && player.weapon == "light_crossbow")
+		{
+			cout << "Already equipped!" << endl;
+		}
+	else if (equipThis == "handaxe" && player.weapon != "handaxe")
+		{
+			handaxe.equip();
+		}
+	else if (equipThis == "handaxe" && player.weapon == "handaxe")
 		{
 			cout << "Already equipped!" << endl;
 		}
@@ -921,8 +977,13 @@ void setFighter()
 	none.equip();
 	
 	greatsword.get();
+	battleaxe.get();
 	longbow.get();
+	lightCrossbow.get();
+	handaxe.get();
+	
 	chain.get();
+	leather.get();
 	
 	return;
 }
