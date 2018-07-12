@@ -333,6 +333,11 @@ class armor
 		if (player.profs[type] && player.inventory[name])
 		{
 			player.AC = ACmod;
+			if (player.fStyle == "Defense")
+			{
+				cout << "Defense bonus!" << endl;
+				player.AC++;
+			}
 			if (adDex == true)
 			{
 				player.AC = player.AC + player.dexMOD;
