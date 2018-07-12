@@ -2,7 +2,7 @@
 //REPLACE #include BELOW WITH INDIVIDUAL
 //HEADERS OR PERSONAL FILE PATH
 //LONG-TERM GOAL  : FIGHTER
-//SHORT-TERM GOAL : SHIELDS AND HANDS
+//SHORT-TERM GOAL : ATTACKS
 
 #include "/Users/jnken/Programs/stdc++.h"
 
@@ -194,13 +194,31 @@ class unit
 		int atkdmg = 0;
 		int roll;
 		int atkRoll;
-		atkRoll = rollD20() + strMOD;
-		cout << "Rolled " << atkRoll << " to hit!" << endl;
-		for (int i=1; i<=atkDNum; i++)
+		atkRoll = rollD20();
+		toHit = atkRoll + strMOD;
+		if (atkRoll == 1)
 		{
-		roll = (rand()%(atkDType*100)/100+1);
-		atkdmg = atkdmg + roll;
-		cout << roll << endl;
+			cout << "Missed!" << endl;
+		}
+		else if (atkRoll == 20)
+		{
+			cout << "Critical!" << endl;
+			for (int i=1; i<=(atkDNum * 2); i++)
+			{
+			roll = (rand()%(atkDType*100)/100+1);
+			atkdmg = atkdmg + roll;
+			cout << roll << endl;
+			}
+		}
+		else
+		{
+			cout << "Rolled " << toHit << " to hit!" << endl;
+			for (int i=1; i<=atkDNum; i++)
+			{
+			roll = (rand()%(atkDType*100)/100+1);
+			atkdmg = atkdmg + roll;
+			cout << roll << endl;
+			}
 		}
 		atkdmg = atkdmg + strMOD;
 		cout << "Dealt " << atkdmg << " damage!" << endl;
