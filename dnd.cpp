@@ -38,6 +38,7 @@ class unit
 	int atkDNum;
 	bool shield;
 	int hands;
+	string fStyle;
 	
 	int strength;
 	int dexterity;
@@ -80,11 +81,9 @@ class unit
 	int surv;
 	
 	map<string, bool> skills;
-
 	map<string, bool> profs;
-	
 	map<string, bool> inventory;
-
+	
 	void shortRest()
 	{
 		string heal = "null";
@@ -269,7 +268,15 @@ class unit
 	void status()
 	{
 	cout << "Player: Lvl " << lvl << " " 
-	     << classPlayer << endl;
+	     << classPlayer;
+	if (classPlayer == "Fighter")
+	{
+		cout << " (" << player.fStyle << ")" << endl;
+	}
+	else
+	{
+		cout << endl;
+	}
 	cout << "Race: " << racePlayer << endl;
 	cout << "Hit Points: " << HPnow << "/" << HPmax << endl;
 	cout << "Hit Dice: " << diceLeft << "d" << HPdice << endl;
@@ -1243,6 +1250,63 @@ void setFighter()
 		}
 	}
 	while (equipped == false);
+	
+	bool stylish = false;
+	string style;
+
+	do
+	{
+		cout << "Please select a fighting style." << endl
+		     << "Use a _ in the place of any spaces." << endl
+		     << "For a list of fighting styles, type list:" << endl;
+		cin >> style;
+
+		if (style == "list")
+		{
+			cout << "FIGHTING STYLE " << "BONUS" << endl;
+			cout << "ARCHERY        " << "+2 to attack rolls with "
+						  << "ranged weapons" << endl;
+			cout << "DEFENSE        " << "+1 to armor class while "
+						  << "wearing armor" << endl;
+			cout << "DUELING        " << "+2 to damage rolls with "
+						  << "one-handed melee weapons" 
+						  << endl;
+			cout << "GREAT WEAPON   " << "Reroll damage dice on an"
+						  << " attack with a two-handed"
+						  << " melee weapon if roll is "
+						  << "1 or 2" << endl;
+		}
+		else if (style == "archery" || 
+			 style == "ARCHERY")
+		{
+			player.fStyle = "Archery"; 
+			stylish = true;
+		}
+		else if (style == "defense" || 
+			 style == "DEFENSE")
+		{
+			player.fStyle = "Defense";
+			stylish = true;
+		}
+		else if (style == "dueling" || 
+			 style == "DUELING")
+		{
+			player.fStyle = "Dueling";
+			stylish = true;
+		}
+		else if (style == "great_weapon" || 
+			 style == "GREAT_WEAPON")
+		{
+			player.fStyle = "Great Weapon";
+			stylish = true;
+		}
+		else
+		{
+			cout << "Invalid input! Make sure to choose "
+			     << "one of the listed fighting styles." << endl;
+		}
+	}
+	while (stylish == false);
 	
 	return;
 }
