@@ -8,6 +8,13 @@
 
 using namespace std;
 
+int rollD20()
+{
+	int roll;
+	roll = (rand()%(20*100))/100 + 1;
+	return roll;
+}
+
 class unit
 {
 	public:
@@ -111,8 +118,6 @@ class unit
 						healing = healing+roll+conMOD;
 						cout << roll << endl;
 						}
-						cout << "Total Healing: "
-						     << healing << endl;
 						HPnow = HPnow + healing;
 						if (HPnow > HPmax)
 						{
@@ -188,6 +193,9 @@ class unit
 	{
 		int atkdmg = 0;
 		int roll;
+		int atkRoll;
+		atkRoll = rollD20() + strMOD;
+		cout << "Rolled " << atkRoll << " to hit!" << endl;
 		for (int i=1; i<=atkDNum; i++)
 		{
 		roll = (rand()%(atkDType*100)/100+1);
@@ -195,8 +203,6 @@ class unit
 		cout << roll << endl;
 		}
 		atkdmg = atkdmg + strMOD;
-		cout << "Total Damage: "
-		     << atkdmg << endl;
 		cout << "Dealt " << atkdmg << " damage!" << endl;
 
 		return;
