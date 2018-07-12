@@ -194,6 +194,7 @@ class unit
 		int atkdmg = 0;
 		int roll;
 		int atkRoll;
+		int toHit;
 		atkRoll = rollD20();
 		toHit = atkRoll + strMOD;
 		if (atkRoll == 1)
@@ -220,8 +221,11 @@ class unit
 			cout << roll << endl;
 			}
 		}
-		atkdmg = atkdmg + strMOD;
-		cout << "Dealt " << atkdmg << " damage!" << endl;
+		if (atkRoll != 1)
+		{
+			atkdmg = atkdmg + strMOD;
+			cout << "Dealt " << atkdmg << " damage!" << endl;
+		}
 
 		return;
 	}
