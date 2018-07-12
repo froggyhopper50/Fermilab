@@ -36,6 +36,7 @@ class unit
 	string weapon;
 	int atkDType;
 	int atkDNum;
+	bool melee;
 	bool shield;
 	int hands;
 	string fStyle;
@@ -197,6 +198,11 @@ class unit
 		bool miss = false;
 		atkRoll = rollD20();
 		toHit = atkRoll + strMOD;
+		if (fStyle == "Archery" && melee == false)
+		{
+			cout << "Archery bonus!" << endl;
+			toHit = toHit + 2;
+		}
 		if (atkRoll == 1)
 		{
 			cout << "Missed!" << endl;
@@ -429,6 +435,7 @@ class weapon
 	int dNum;
 	int hands;
 	string type;
+	bool melee;
 	string name;
 
 	void equip()
@@ -438,6 +445,7 @@ class weapon
 			player.atkDType = dType;
 			player.atkDNum = dNum;
 			player.hands = hands;
+			player.melee = melee;
 			if (name != "none")
 			{
 				cout << "Equipped!" << endl;
@@ -513,36 +521,42 @@ void setWeapons()
 	greatsword.dNum = 2;
 	greatsword.hands = 2;
 	greatsword.type = "MMW";
+	greatsword.melee = true;
 	greatsword.name = "greatsword";
 	
 	battleaxe.dType = 8;
 	battleaxe.dNum = 1;
 	battleaxe.hands = 1;
 	battleaxe.type = "MMW";
+	battleaxe.melee = true;
 	battleaxe.name = "battleaxe";
 
 	longbow.dType = 8;
 	longbow.dNum = 1;
 	longbow.hands = 2;
 	longbow.type = "MRW";
+	longbow.melee = false;
 	longbow.name = "longbow";
 	
 	lightCrossbow.dType = 8;
 	lightCrossbow.dNum = 1;
 	lightCrossbow.hands = 2;
 	lightCrossbow.type = "SRW";
+	lightCrossbow.melee = false;
 	lightCrossbow.name = "light_crossbow";
 	
 	handaxe.dType = 6;
 	handaxe.dNum = 1;
 	handaxe.hands = 1;
 	handaxe.type = "SMW";
+	handaxe.melee = true;
 	handaxe.name = "handaxe";
 	
 	none.dType = 0;
 	none.dNum = 0;
 	none.hands = 0;
 	none.type = "SMW";
+	none.melee = true;
 	none.name = "none";
 	
 	return;
