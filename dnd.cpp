@@ -195,11 +195,13 @@ class unit
 		int roll;
 		int atkRoll;
 		int toHit;
+		bool miss = false;
 		atkRoll = rollD20();
 		toHit = atkRoll + strMOD;
 		if (atkRoll == 1)
 		{
 			cout << "Missed!" << endl;
+			miss = true;
 		}
 		else if (atkRoll == 20)
 		{
@@ -221,7 +223,7 @@ class unit
 			cout << roll << endl;
 			}
 		}
-		if (atkRoll != 1)
+		if (miss == false)
 		{
 			atkdmg = atkdmg + strMOD;
 			cout << "Dealt " << atkdmg << " damage!" << endl;
