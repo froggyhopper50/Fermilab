@@ -267,7 +267,8 @@ class unit
 
 		for (pos = inventory.begin(); pos != inventory.end(); ++pos)
 		{
-			if (pos->first != "none" && pos->first != "nothing")
+			if (pos->first != "none" && pos->first != "nothing" &&
+			    pos->second == true)
 			{
 				cout << "-" << pos->first << endl;
 			}
