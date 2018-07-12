@@ -271,7 +271,7 @@ class unit
 	     << classPlayer;
 	if (classPlayer == "Fighter")
 	{
-		cout << " (" << player.fStyle << ")" << endl;
+		cout << " (" << fStyle << ")" << endl;
 	}
 	else
 	{
