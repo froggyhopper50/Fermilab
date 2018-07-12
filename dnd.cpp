@@ -231,6 +231,11 @@ class unit
 		if (miss == false)
 		{
 			atkdmg = atkdmg + strMOD;
+			if (fStyle == "Dueling" && hands == 1 && melee == true)
+			{
+				cout << "Dueling bonus!" << endl;
+				atkdmg = atkdmg + 2;
+			}
 			cout << "Dealt " << atkdmg << " damage!" << endl;
 		}
 
