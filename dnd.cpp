@@ -214,6 +214,12 @@ class unit
 			for (int i=1; i<=(atkDNum * 2); i++)
 			{
 			roll = (rand()%(atkDType*100)/100+1);
+			if (roll <= 2 && fStyle == "Great Weapon" && 
+			    hands == 2 && melee == true)
+			{
+				cout << "Great Weapon bonus!" << endl;
+				roll = (rand()%(atkDType*100)/100+1);
+			}
 			atkdmg = atkdmg + roll;
 			cout << roll << endl;
 			}
@@ -224,6 +230,12 @@ class unit
 			for (int i=1; i<=atkDNum; i++)
 			{
 			roll = (rand()%(atkDType*100)/100+1);
+			if (roll <= 2 && fStyle == "Great Weapon" && 
+			    hands == 2 && melee == true)
+			{
+				cout << "Great Weapon bonus!" << endl;
+				roll = (rand()%(atkDType*100)/100+1);
+			}
 			atkdmg = atkdmg + roll;
 			cout << roll << endl;
 			}
